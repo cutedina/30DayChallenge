@@ -1,8 +1,11 @@
 // Generate buttons
 const buttonGrid = document.querySelector('.button-grid');
-const journalEntries = Array.from({length: 30}, (_, i) => 
-    `🌼 Day ${i + 1} 🌸<br><br>${'Today was an amazing day! '.repeat(15)}`
-);
+
+// Structured journal entries
+const journalEntries = Array.from({length: 30}, (_, i) => ({
+    title: `🌼 Day ${i + 1} 🌸`,
+    content: `Today was an amazing day! ${'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '.repeat(15)}`
+}));
 
 // Create buttons
 buttonGrid.innerHTML = Array.from({length: 30}, (_, i) => 
@@ -13,7 +16,13 @@ buttonGrid.innerHTML = Array.from({length: 30}, (_, i) =>
 function openModal(dayIndex) {
     const modal = document.getElementById('modal');
     const modalText = document.getElementById('modal-text');
-    modalText.innerHTML = journalEntries[dayIndex];
+    const entry = journalEntries[dayIndex];
+    
+    modalText.innerHTML = `
+        <div class="journal-title">${entry.title}</div>
+        <div class="journal-content">${entry.content}</div>
+    `;
+    
     modal.style.display = 'flex';
 }
 
@@ -28,3 +37,15 @@ window.onclick = function(event) {
         closeModal();
     }
 };
+
+const journalEntries = [
+    {
+        title: "Day 1: My First Entry",
+        content: "Start writing your actual content here..."
+    },
+    {
+        title: "Day 2: Another Day",
+        content: "More detailed journal content goes here..."
+    },
+    // ... continue for all 30 days
+];
