@@ -5,7 +5,7 @@ const buttonGrid = document.querySelector('.button-grid');
 const journalEntries = [
     // Custom entries for first 5 days
     {
-        title: "    Journal Log 1: The Beginning",
+        title: "  Journal Log 1: The Beginning",
         content: `<p>Welp, today: March 13th 2025, marks the first day of the challenge, huh…<br>
                     I really didn't expect that I’d follow through with it but it didn't sit right with me to do you dirty like that and then for everything to be back to normal without taking at least SOME sort of punishment.<br>
                     Although a bit extreme, I think I can afford to be sad for a month and then be happy later for reallll.<br>
