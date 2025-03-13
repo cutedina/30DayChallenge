@@ -1,44 +1,9 @@
 // Generate buttons
 const buttonGrid = document.querySelector('.button-grid');
 
-// Structured journal entries
-const journalEntries = Array.from({length: 30}, (_, i) => ({
-    title: `🌼 Day ${i + 1} 🌸`,
-    content: `Today was an amazing day! ${'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '.repeat(15)}`
-}));
-
-// Create buttons
-buttonGrid.innerHTML = Array.from({length: 30}, (_, i) => 
-    `<button class="day-btn" style="--i: ${i}" onclick="openModal(${i})">Day ${i + 1}</button>`
-).join('');
-
-// Modal functions
-function openModal(dayIndex) {
-    const modal = document.getElementById('modal');
-    const modalText = document.getElementById('modal-text');
-    const entry = journalEntries[dayIndex];
-    
-    modalText.innerHTML = `
-        <div class="journal-title">${entry.title}</div>
-        <div class="journal-content">${entry.content}</div>
-    `;
-    
-    modal.style.display = 'flex';
-}
-
-function closeModal() {
-    document.getElementById('modal').style.display = 'none';
-}
-
-// Close modal when clicking outside
-window.onclick = function(event) {
-    const modal = document.getElementById('modal');
-    if (event.target === modal) {
-        closeModal();
-    }
-};
-
+// Structured journal entries (30 days)
 const journalEntries = [
+    // Custom entries for first 5 days
     {
         title: "📖 Day 1: Became an Overnight Author!",
         content: `<p>Wrote 3 whole pages of my masterpiece "How to Pet a Cat Properly"!<br>
@@ -87,7 +52,40 @@ const journalEntries = [
                     <li>Guitar-shaped pizza ordered to celebrate</li>
                   </ul>`
     },
-    // Continue this pattern for days 6-30...
+    // Placeholder entries for days 6-30
+    ...Array(25).fill().map((_, i) => ({
+        title: `🌼 Day ${i + 6} 🌸`,
+        content: `Today was an amazing day! ${'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '.repeat(5)}`
+    }))
 ];
 
-// Then just keep the rest of your existing code!
+// Create buttons
+buttonGrid.innerHTML = Array.from({length: 30}, (_, i) => 
+    `<button class="day-btn" style="--i: ${i}" onclick="openModal(${i})">Day ${i + 1}</button>`
+).join('');
+
+// Modal functions
+function openModal(dayIndex) {
+    const modal = document.getElementById('modal');
+    const modalText = document.getElementById('modal-text');
+    const entry = journalEntries[dayIndex];
+    
+    modalText.innerHTML = `
+        <div class="journal-title">${entry.title}</div>
+        <div class="journal-content">${entry.content}</div>
+    `;
+    
+    modal.style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('modal');
+    if (event.target === modal) {
+        closeModal();
+    }
+};
