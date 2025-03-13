@@ -57,6 +57,19 @@ body {
                -5px -5px 10px #fff4ff;
 }
 
+.day-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 8px 8px 15px #d9aec4,
+               -8px -8px 15px #fff4ff;
+    background: linear-gradient(145deg, #ffd4eb, #ffe6f4);
+}
+
+.day-btn:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: inset 5px 5px 10px #d9aec4,
+               inset -5px -5px 10px #fff4ff;
+}
+
 /* Modal Styles */
 .modal {
     display: none;
@@ -87,3 +100,104 @@ body {
     border: 2px solid #fff;
 }
 
+.close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    cursor: pointer;
+    font-size: 2rem;
+    color: #ff99cc;
+    transition: all 0.3s ease;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+}
+
+.close-btn:hover {
+    transform: rotate(180deg) scale(1.2);
+    color: #ff66b3;
+}
+
+.modal-text {
+    line-height: 1.8;
+    color: #6d435a;
+    font-size: 1.1rem;
+    padding-right: 1rem;
+}
+
+.modal-text::first-letter {
+    font-size: 2.5rem;
+    color: #ff99cc;
+    float: left;
+    margin-right: 0.5rem;
+    line-height: 0.8;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+}
+
+/* Animations */
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-20vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalOpen {
+    0% {
+        transform: scale(0.8) rotate(-5deg);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff8fc;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ffb3d9;
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .button-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .day-btn {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    
+    .modal-content {
+        padding: 1.5rem;
+    }
+}
