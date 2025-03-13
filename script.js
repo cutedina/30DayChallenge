@@ -1,4 +1,4 @@
-r// Generate buttons
+// Generate buttons
 const buttonGrid = document.querySelector('.button-grid');
 
 // Structured journal entries (30 days)
