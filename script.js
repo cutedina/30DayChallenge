@@ -1,4 +1,4 @@
-// Generate buttons
+r// Generate buttons
 const buttonGrid = document.querySelector('.button-grid');
 
 // Structured journal entries (30 days)
@@ -39,7 +39,7 @@ const journalEntries = [
                     It’s like 17:20 at the time, still a long time till I can drink so that’s unfortunate. I’m currently listening to a podcast and writing this stuff, maybe I’ll end it here for today. I miss you a lot and I still love you.<br>
                     I reckon I should at least add an update at night, since I plan on sleeping in around 8 hours.</p>`
     },
-    {
+    
     // Placeholder entries for days 6-30
     ...Array(29).fill().map((_, i) => ({
         title: `🌼 Day ${i + 2} 🌸`,
