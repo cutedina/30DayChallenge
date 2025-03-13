@@ -37,15 +37,3 @@ window.onclick = function(event) {
         closeModal();
     }
 };
-
-const journalEntries = [
-    {
-        title: "Day 1: My First Entry",
-        content: "Start writing your actual content here..."
-    },
-    {
-        title: "Day 2: Another Day",
-        content: "More detailed journal content goes here..."
-    },
-    // ... continue for all 30 days
-];
