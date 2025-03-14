@@ -1,4 +1,6 @@
 const buttonGrid = document.querySelector('.button-grid');
+const heartScroll = document.getElementById('heartScroll');
+const modalContent = document.querySelector('.modal-content');
 const journalEntries = [
     {
         title: " 💞 Journal Log 1: The Beginning",
@@ -121,7 +123,20 @@ buttonGrid.innerHTML = Array.from({length: 30}, (_, i) =>
     `<button class="day-btn" style="--i: ${i}" onclick="openModal(${i})">Day ${i + 1}</button>`
 ).join('');
 
-function openModal(dayIndex) {
+function updateHeartPosition() {
+    const scrollableHeight = modalContent.scrollHeight - modalContent.clientHeight;
+    const scrollProgress = modalContent.scrollTop / scrollableHeight;
+    const heartPosition = scrollProgress * (modalContent.clientHeight - 30);
+    
+    heartScroll.style.transform = `translateY(${heartPosition}px)`;
+    heartScroll.style.animation = 'heartbeat 0.5s ease';
+    setTimeout(() => heartScroll.style.animation = '', 500);
+}
+
+modalContent.addEventListener('scroll', updateHeartPosition);
+window.addEventListener('resize', updateHeartPosition);
+
+function openModal() {
     const modal = document.getElementById('modal');
     const modalText = document.getElementById('modal-text');
     const entry = journalEntries[dayIndex];
@@ -130,8 +145,8 @@ function openModal(dayIndex) {
         <div class="journal-title">${entry.title}</div>
         <div class="journal-content">${entry.content}</div>
     `;
-    
     modal.style.display = 'flex';
+    updateHeartPosition(); 
 }
 
 function closeModal() {
