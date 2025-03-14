@@ -224,7 +224,8 @@ body {
     max-width: 800px;  /* Fixed horizontal size */
     width: 90%;
     height: 70vh;      /* Fixed height for vertical scroll */
-    overflow-y: auto;  /* Vertical scrolling */
+    position: relative;
+    overflow-y: auto;
 }
 
 .modal-content::-webkit-scrollbar {
@@ -248,9 +249,9 @@ body {
     display: block;
 }
 @keyframes heartbeat {
-    0% { transform: scale(1); }
-    25% { transform: scale(1.2); }
-    50% { transform: scale(0.95); }
-    75% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    0% { transform: translateY(var(--pos)) scale(1); }
+    25% { transform: translateY(var(--pos)) scale(1.2); }
+    50% { transform: translateY(var(--pos)) scale(0.95); }
+    75% { transform: translateY(var(--pos)) scale(1.1); }
+    100% { transform: translateY(var(--pos)) scale(1); }
 }
