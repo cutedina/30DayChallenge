@@ -136,7 +136,7 @@ function updateHeartPosition() {
 modalContent.addEventListener('scroll', updateHeartPosition);
 window.addEventListener('resize', updateHeartPosition);
 
-function openModal() {
+function openModal(dayIndex) {
     const modal = document.getElementById('modal');
     const modalText = document.getElementById('modal-text');
     const entry = journalEntries[dayIndex];
