@@ -126,7 +126,8 @@ buttonGrid.innerHTML = Array.from({length: 30}, (_, i) =>
 function updateHeartPosition() {
     const scrollableHeight = modalContent.scrollHeight - modalContent.clientHeight;
     const scrollProgress = modalContent.scrollTop / scrollableHeight;
-    const heartPosition = scrollProgress * (modalContent.clientHeight - 30);
+    const trackHeight = modalContent.clientHeight - heartScroll.offsetHeight
+    const heartPosition = scrollProgress * trackHeight;
     
     heartScroll.style.transform = `translateY(${heartPosition}px)`;
     heartScroll.style.animation = 'heartbeat 0.5s ease';
@@ -148,6 +149,7 @@ function openModal(dayIndex) {
     `;
     modal.style.display = 'flex';
     updateHeartPosition(); 
+    setTimeout(updateHeartPosition, 50)
 }
 
 function closeModal() {
