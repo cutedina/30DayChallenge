@@ -140,7 +140,8 @@ function openModal(dayIndex) {
     const modal = document.getElementById('modal');
     const modalText = document.getElementById('modal-text');
     const entry = journalEntries[dayIndex];
-    
+
+    modal.classList.add('show');
     modalText.innerHTML = `
         <div class="journal-title">${entry.title}</div>
         <div class="journal-content">${entry.content}</div>
@@ -150,6 +151,8 @@ function openModal(dayIndex) {
 }
 
 function closeModal() {
+    const modal = document.getElementById('modal');
+    modal.classList.remove('show');
     document.getElementById('modal').style.display = 'none';
 }
 
