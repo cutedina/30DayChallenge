@@ -241,6 +241,10 @@ body {
     transition: transform 0.3s ease;
     pointer-events: none;
     z-index: 100;
+    display: none;
+}
+.modal.show .heart-scroll {
+    display: block;
 }
 @keyframes heartbeat {
     0% { transform: scale(1); }
