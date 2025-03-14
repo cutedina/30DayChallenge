@@ -124,17 +124,30 @@ buttonGrid.innerHTML = Array.from({length: 30}, (_, i) =>
 ).join('');
 
 function updateHeartPosition() {
-    const scrollableHeight = modalContent.scrollHeight - modalContent.clientHeight;
-    const scrollProgress = modalContent.scrollTop / scrollableHeight;
-    const trackHeight = modalContent.clientHeight - heartScroll.offsetHeight
-    const heartPosition = scrollProgress * trackHeight;
+    const content = document.querySelector('.modal-content');
+    const heart = document.getElementById('heartScroll');
+    const scrollTop = content.scrollTop;
+    const scrollHeight = content.scrollHeight - content.clientHeight;
+    const modalHeight = content.clientHeight;
+    const heartHeight = heart.offsetHeight;
+    const maxMovement = modalHeight - heartHeight - 40;
+    const scrollPercentage = scrollTop / scrollHeight;
+    const newPosition = 20 + (scrollPercentage * maxMovement); 
     
-    heartScroll.style.transform = `translateY(${heartPosition}px)`;
-    heartScroll.style.animation = 'heartbeat 0.5s ease';
-    setTimeout(() => heartScroll.style.animation = '', 500);
+    heart.style.transform = `translateY(${newPosition}px)`;
+
+    if (scrollTop <= 0 || scrollTop >= scrollHeight) {
+        heart.style.animation = 'heartbeat 0.5s ease';
+        setTimeout(() => heart.style.animation = '', 500);
+    }
 }
 
-modalContent.addEventListener('scroll', updateHeartPosition);
+let isScrolling;
+modalContent.addEventListener('scroll', () => {
+    window.cancelAnimationFrame(isScrolling);
+    isScrolling = window.requestAnimationFrame(updateHeartPosition);
+});
+
 window.addEventListener('resize', updateHeartPosition);
 
 function openModal(dayIndex) {
