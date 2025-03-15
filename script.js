@@ -169,6 +169,7 @@ function openModal(dayIndex) {
         modalContent.scrollTop = 0;
         updateHeartPosition();
     }, 100);
+}
 
 function closeModal() {
     const modal = document.getElementById('modal');
