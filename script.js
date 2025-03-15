@@ -127,17 +127,16 @@ buttonGrid.innerHTML = Array.from({length: 30}, (_, i) =>
 ).join('');
 
 function updateHeartPosition() {
-    const container = document.querySelector('.journal-scroll-container');
     const content = modalContent;
     const heart = heartScroll;
+    const journalContainer = document.querySelector('.journal-scroll-container');
     const scrollTop = content.scrollTop;
-    const containerHeight = container.offsetHeight;
-    const contentHeight = container.scrollHeight;
-    const maxScroll = contentHeight - containerHeight;
-    const scrollPercentage = scrollTop / maxScroll;
-    const minY = 20;
-    const maxY = containerHeight - heart.offsetHeight - 20;
-    const newY = minY + (scrollPercentage * (maxY - minY));
+    const scrollHeight = content.scrollHeight - content.clientHeight;
+    const heartHeight = heart.offsetHeight;
+    const startY = 20; 
+    const endY = journalContainer.offsetHeight - heartHeight - 20; 
+    const scrollPercentage = scrollTop / scrollHeight;
+    const newY = startY + (scrollPercentage * (endY - startY));
     
     heart.style.top = `${newY}px`;
     
