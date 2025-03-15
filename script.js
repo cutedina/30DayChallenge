@@ -127,22 +127,22 @@ buttonGrid.innerHTML = Array.from({length: 30}, (_, i) =>
 ).join('');
 
 function updateHeartPosition() {
-    const content = modalContent;
-    const scrollTop = content.scrollTop;
-    const scrollHeight = content.scrollHeight - content.clientHeight;
-    const heartHeight = heartScroll.offsetHeight;
-    const maxMovement = content.clientHeight - heartHeight - 40;
-    const scrollPercentage = Math.min(Math.max(scrollTop / scrollHeight, 0), 1);
-    const newPosition = 20 + (scrollPercentage * maxMovement);
-    
-    content.style.setProperty('--pos', `${newPosition}px`);
+  const content = modalContent;
+  const heart = heartScroll;
+  const scrollTop = content.scrollTop;
+  const scrollHeight = content.scrollHeight - content.clientHeight;
+  const maxMovement = content.clientHeight - heart.offsetHeight - 40; 
+  const scrollPercentage = scrollTop / scrollHeight;
+  const newPosition = 20 + (scrollPercentage * maxMovement);
+  
+  content.style.setProperty('--pos', `${newPosition}px`);
 
-    clearTimeout(scrollTimeout);
-    heartScroll.style.animation = 'heartbeat-scroll 0.5s infinite';
-    
-    scrollTimeout = setTimeout(() => {
-        heartScroll.style.animation = 'heartbeat-idle 2s infinite';
-    }, SCROLL_DELAY);
+  clearTimeout(scrollTimeout);
+  heart.style.animation = 'heartbeat-scroll 0.5s infinite';
+  
+  scrollTimeout = setTimeout(() => {
+    heart.style.animation = 'heartbeat-idle 2s infinite';
+  }, SCROLL_DELAY);
 }
 
 let isScrolling;
@@ -167,8 +167,9 @@ function openModal(dayIndex) {
     
     setTimeout(() => {
         modalContent.scrollTop = 0;
-        updateHeartPosition();
-    }, 100);
+        updateHeartPosition(); 
+        heartScroll.style.display = 'block';
+      }, 100);
 }
 
 function closeModal() {
