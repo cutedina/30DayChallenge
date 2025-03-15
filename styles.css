@@ -204,7 +204,6 @@ body {
     position: relative;
     overflow-y: auto;
     padding-right: 45px;
-    --pos: 0px;
 }
 
 .modal-content::-webkit-scrollbar {
