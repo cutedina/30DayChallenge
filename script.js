@@ -1,8 +1,4 @@
 const buttonGrid = document.querySelector('.button-grid');
-const heartScroll = document.getElementById('heartScroll');
-const modalContent = document.querySelector('.modal-content');
-let scrollTimeout;
-const SCROLL_DELAY = 300; 
 const journalEntries = [
     {
         title: " 💞 Journal Log 1: The Beginning",
@@ -120,85 +116,26 @@ const journalEntries = [
     }))
 ];
 
-heartScroll.style.animation = 'heartbeat-idle 2s infinite';
-
-window.openModal = function(dayIndex) {
-    const modal = document.getElementById('modal');
-    const modalText = document.getElementById('modal-text');
-    const entry = journalEntries[dayIndex];
-
-    modalText.innerHTML = `
-        <div class="journal-title">${entry.title}</div>
-        <div class="journal-content">${entry.content}</div>`;
-
-    modal.classList.add('show');
-    modal.style.display = 'flex';
-    heartScroll.style.display = 'block';
-
-    requestAnimationFrame(() => {
-        modalContent.scrollTop = 0;
-        updateHeartPosition();
-    });
-};
-
 
 buttonGrid.innerHTML = Array.from({length: 30}, (_, i) => 
     `<button class="day-btn" style="--i: ${i}" onclick="openModal(${i})">Day ${i + 1}</button>`
 ).join('');
 
-function updateHeartPosition() {
-    const container = document.getElementById('journalContainer');
-    const content = document.getElementById('journalContent');
-    const heart = document.getElementById('heartScroll');
-
-    // Null safety checks
-    if (!container || !content || !heart) return;
-
-    // Calculate scroll parameters
-    const scrollTop = container.scrollTop;
-    const scrollHeight = container.scrollHeight - container.clientHeight;
-    const heartHeight = heart.offsetHeight;
-
-    // Only update if scrollable
-    if (scrollHeight > 0) {
-        const startY = 20;
-        const endY = container.clientHeight - heartHeight - 20;
-        const scrollPercentage = scrollTop / scrollHeight;
-        const newY = startY + (scrollPercentage * (endY - startY));
-
-        heart.style.top = `${newY}px`;
-    }
-
-    // Animation handling
-    clearTimeout(scrollTimeout);
-    heart.style.animation = 'heartbeat-scroll 0.5s infinite';
-    scrollTimeout = setTimeout(() => {
-        heart.style.animation = 'heartbeat-idle 2s infinite';
-    }, SCROLL_DELAY);
+function openModal(dayIndex) {
+    const modal = document.getElementById('modal');
+    const modalText = document.getElementById('modal-text');
+    const entry = journalEntries[dayIndex];
+    
+    modalText.innerHTML = `
+        <div class="journal-title">${entry.title}</div>
+        <div class="journal-content">${entry.content}</div>
+    `;
+    
+    modal.style.display = 'flex';
 }
-
-// Initialize with null check
-const journalContainer = document.getElementById('journalContainer');
-if (journalContainer) {
-    journalContainer.addEventListener('scroll', () => {
-        window.requestAnimationFrame(updateHeartPosition);
-    });
-}
-
-let isScrolling;
-modalContent.addEventListener('scroll', () => {
-    window.cancelAnimationFrame(isScrolling);
-    isScrolling = window.requestAnimationFrame(updateHeartPosition);
-});
-
-window.addEventListener('resize', updateHeartPosition);
-
- 
 
 function closeModal() {
-    const modal = document.getElementById('modal');
-    modal.classList.remove('show');
-    modal.style.display = 'none';
+    document.getElementById('modal').style.display = 'none';
 }
 
 window.onclick = function(event) {
