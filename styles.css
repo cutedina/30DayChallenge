@@ -197,23 +197,10 @@ body {
     padding: 0 1.5rem;
 }
 
-.modal-content {
-    max-width: 800px;  /* Fixed horizontal size */
-    width: 90%;
-    height: 70vh;      /* Fixed height for vertical scroll */
-    position: relative;
-    overflow-y: auto;
-    padding-right: 45px;
-}
-
-.modal-content::-webkit-scrollbar {
-    width: 0;
-    background: transparent;
-}
 .heart-scroll {
     position: absolute;
     right: 15px;
-    top: var(--pos); 
+    top: 20px; 
     width: 35px;
     height: 35px;
     animation: heartbeat 2s infinite;
@@ -224,9 +211,25 @@ body {
     z-index: 1001;
     display: none;
 }
+
 .modal.show .heart-scroll {
     display: block;
 }
+
+.modal-content {
+    max-width: 800px;  /* Fixed horizontal size */
+    width: 90%;
+    height: 70vh;      /* Fixed height for vertical scroll */
+    position: relative;
+    overflow-y: auto;
+    padding-right: 50px;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
 
 @keyframes heartbeat-idle {
     0%, 100% { transform: scale(1); }
