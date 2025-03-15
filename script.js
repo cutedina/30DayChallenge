@@ -119,9 +119,16 @@ const journalEntries = [
 document.addEventListener('DOMContentLoaded', function() {
     OverlayScrollbars(document.querySelector('.modal-content'), {
         scrollbars: {
-            visibility: "auto",
-            autoHide: "never",
+            autoHide: 'never',
             clickScroll: true
+        },
+        overflow: {
+            x: 'hidden'
+        },
+        callbacks: {
+            onInitialized: () => {
+                OverlayScrollbars(document.querySelector('.modal-content')).update();
+            }
         }
     });
 });
@@ -134,13 +141,16 @@ function openModal(dayIndex) {
     const modal = document.getElementById('modal');
     const modalText = document.getElementById('modal-text');
     const entry = journalEntries[dayIndex];
-    
+
     modalText.innerHTML = `
         <div class="journal-title">${entry.title}</div>
         <div class="journal-content">${entry.content}</div>
     `;
-    
+
     modal.style.display = 'flex';
+    
+    const instance = OverlayScrollbars(document.querySelector('.modal-content'));
+    instance.update(true);
 }
 
 function closeModal() {
