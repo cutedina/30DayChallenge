@@ -1,6 +1,8 @@
 const buttonGrid = document.querySelector('.button-grid');
 const heartScroll = document.getElementById('heartScroll');
 const modalContent = document.querySelector('.modal-content');
+let scrollTimeout;
+const SCROLL_DELAY = 300; 
 const journalEntries = [
     {
         title: " 💞 Journal Log 1: The Beginning",
@@ -118,28 +120,28 @@ const journalEntries = [
     }))
 ];
 
+heartScroll.style.animation = 'heartbeat-idle 2s infinite';
 
 buttonGrid.innerHTML = Array.from({length: 30}, (_, i) => 
     `<button class="day-btn" style="--i: ${i}" onclick="openModal(${i})">Day ${i + 1}</button>`
 ).join('');
 
 function updateHeartPosition() {
-    const content = document.querySelector('.modal-content');
-    const heart = document.getElementById('heartScroll');
+    const content = modalContent;
     const scrollTop = content.scrollTop;
     const scrollHeight = content.scrollHeight - content.clientHeight;
-    const modalHeight = content.clientHeight;
-    const heartHeight = heart.offsetHeight;
-    const maxMovement = modalHeight - heartHeight - 40;
-    const scrollPercentage = scrollTop / scrollHeight;
-    const newPosition = 20 + (scrollPercentage * maxMovement); 
+    const heartHeight = heartScroll.offsetHeight;
+    const maxMovement = content.clientHeight - heartHeight - 40;
+    const scrollPercentage = Math.min(Math.max(scrollTop / scrollHeight, 0), 1);
+    const newPosition = 20 + (scrollPercentage * maxMovement);
     
-    heart.style.transform = `translateY(${newPosition}px)`;
+    heartScroll.style.transform = `translateY(${newPosition}px)`;
 
-    if (scrollTop <= 0 || scrollTop >= scrollHeight) {
-        heart.style.animation = 'heartbeat 0.5s ease';
-        setTimeout(() => heart.style.animation = '', 500);
-    }
+    clearTimeout(scrollTimeout);
+    heartScroll.style.animation = 'heartbeat-scroll 0.5s infinite';
+    scrollTimeout = setTimeout(() => {
+        heartScroll.style.animation = 'heartbeat-idle 2s infinite';
+    }, SCROLL_DELAY);
 }
 
 let isScrolling;
@@ -161,14 +163,17 @@ function openModal(dayIndex) {
         <div class="journal-content">${entry.content}</div>
     `;
     modal.style.display = 'flex';
-    updateHeartPosition(); 
-    setTimeout(updateHeartPosition, 50)
+    
+    SetTimeout(() => {
+        modalContent.scrollTop = 0;
+        updateHeartPosition();
+    }, 50);
 }
 
 function closeModal() {
     const modal = document.getElementById('modal');
     modal.classList.remove('show');
-    document.getElementById('modal').style.display = 'none';
+    modal.style.display = 'none';
 }
 
 window.onclick = function(event) {
