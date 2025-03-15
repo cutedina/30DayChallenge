@@ -226,6 +226,7 @@ body {
     height: 70vh;      /* Fixed height for vertical scroll */
     position: relative;
     overflow-y: auto;
+    --pos: 0px;
 }
 
 .modal-content::-webkit-scrollbar {
@@ -263,8 +264,4 @@ body {
     50% { transform: translateY(var(--pos)) scale(0.9); }
     75% { transform: translateY(var(--pos)) scale(1.1); }
     100% { transform: translateY(var(--pos)) scale(1); }
-}
-
-.modal-content {
-    --pos: 0px;
 }
