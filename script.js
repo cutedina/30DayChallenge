@@ -116,11 +116,6 @@ const journalEntries = [
     }))
 ];
 
-
-buttonGrid.innerHTML = Array.from({length: 30}, (_, i) => 
-    `<button class="day-btn" style="--i: ${i}" onclick="openModal(${i})">Day ${i + 1}</button>`
-).join('');
-
 document.addEventListener('DOMContentLoaded', function() {
     OverlayScrollbars(document.querySelector('.modal-content'), {
         scrollbars: {
@@ -130,6 +125,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+buttonGrid.innerHTML = Array.from({length: 30}, (_, i) => 
+    `<button class="day-btn" style="--i: ${i}" onclick="openModal(${i})">Day ${i + 1}</button>`
+).join('');
 
 function openModal(dayIndex) {
     const modal = document.getElementById('modal');
