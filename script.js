@@ -156,24 +156,25 @@ modalContent.addEventListener('scroll', () => {
 
 window.addEventListener('resize', updateHeartPosition);
 
-function openModal(dayIndex) {
-    const modal = document.getElementById('modal');
-    const modalText = document.getElementById('modal-text');
-    const entry = journalEntries[dayIndex];
-
-    heartScroll.style.display = 'block';
+function updateHeartPosition() {
+    const content = modalContent;
+    const heart = heartScroll;
+    const scrollTop = content.scrollTop;
+    const scrollHeight = content.scrollHeight - content.clientHeight;
+    const scrollPercentage = scrollTop / scrollHeight;
+    const modalHeight = content.clientHeight;
+    const heartHeight = heart.offsetHeight;
+    const maxMovement = modalHeight - heartHeight - 40;
+    const newPosition = 20 + (scrollPercentage * maxMovement);
     
-    modal.classList.add('show');
-    modalText.innerHTML = `
-        <div class="journal-title">${entry.title}</div>
-        <div class="journal-content">${entry.content}</div>
-    `;
-    modal.style.display = 'flex'; 
+    heart.style.top = `${newPosition}px`;
     
-    setTimeout(() => {
-        modalContent.scrollTop = 0;
-        updateHeartPosition(); // Initial position update
-    }, 100);
+    clearTimeout(scrollTimeout);
+    heart.style.animation = 'heartbeat-scroll 0.5s infinite';
+    
+    scrollTimeout = setTimeout(() => {
+        heart.style.animation = 'heartbeat-idle 2s infinite';
+    }, SCROLL_DELAY);
 }
 
 function closeModal() {
