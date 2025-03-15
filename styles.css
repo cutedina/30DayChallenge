@@ -1,11 +1,9 @@
-/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Comic Neue', cursive;
 }
-
 body {
     background: linear-gradient(135deg, #fff2f9 0%, #e6f9ff 100%);
     min-height: 100vh;
@@ -13,8 +11,6 @@ body {
     position: relative;
     overflow-x: hidden;
 }
-
-/* Floating Hearts */
 .hearts {
     position: fixed;
     width: 100%;
@@ -22,7 +18,6 @@ body {
     pointer-events: none;
     z-index: 0;
 }
-
 .heart {
     position: absolute;
     opacity: 0;
@@ -30,8 +25,6 @@ body {
     font-size: 1.5rem;
     color: #ffb3d9;
 }
-
-/* Button Grid */
 .button-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -41,8 +34,6 @@ body {
     position: relative;
     z-index: 1;
 }
-
-/* Day Buttons */
 .day-btn {
     background: linear-gradient(145deg, #ffe6f4, #ffd4eb);
     border: none;
@@ -56,21 +47,17 @@ body {
     box-shadow: 5px 5px 10px #d9aec4,
                -5px -5px 10px #fff4ff;
 }
-
 .day-btn:hover {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 8px 8px 15px #d9aec4,
                -8px -8px 15px #fff4ff;
     background: linear-gradient(145deg, #ffd4eb, #ffe6f4);
 }
-
 .day-btn:active {
     transform: translateY(0) scale(0.98);
     box-shadow: inset 5px 5px 10px #d9aec4,
                inset -5px -5px 10px #fff4ff;
 }
-
-/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -85,7 +72,6 @@ body {
     animation: fadeIn 0.3s ease;
     z-index: 1000;
 }
-
 .modal-content {
     background: linear-gradient(145deg, #fff8fc, #fff1f8);
     padding: 2.5rem;
@@ -99,7 +85,6 @@ body {
                -20px -20px 60px #ffffff;
     border: 2px solid #fff;
 }
-
 .close-btn {
     position: absolute;
     top: 1.5rem;
@@ -110,19 +95,16 @@ body {
     transition: all 0.3s ease;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.1);
 }
-
 .close-btn:hover {
     transform: rotate(180deg) scale(1.2);
     color: #ff66b3;
 }
-
 .modal-text {
     line-height: 1.8;
     color: #6d435a;
     font-size: 1.1rem;
     padding-right: 1rem;
 }
-
 .modal-text::first-letter {
     font-size: 2.5rem;
     color: #ff99cc;
@@ -132,7 +114,6 @@ body {
     text-shadow: 2px 2px 3px rgba(0,0,0,0.1);
 }
 
-/* Animations */
 @keyframes float {
     0% {
         transform: translateY(100vh) rotate(0deg);
@@ -142,6 +123,29 @@ body {
         transform: translateY(-20vh) rotate(360deg);
         opacity: 0;
     }
+}
+.journal-title {
+    font-size: 2.2rem;
+    text-align: center;
+    font-weight: 800;
+    color: #ff66b3;
+    margin: 0 0 2rem 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.journal-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: left;
+    color: #5a435d;
+    padding: 0 1.5rem;
+}
+
+.modal-content {
+    max-width: 800px; 
+    width: 90%;
+    height: 70vh;
+    overflow-y: auto; 
 }
 
 @keyframes popIn {
@@ -171,7 +175,6 @@ body {
     }
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -185,7 +188,6 @@ body {
     border-radius: 10px;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .button-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -200,30 +202,4 @@ body {
     .modal-content {
         padding: 1.5rem;
     }
-}
-
-/* styles.css */
-/* Add these styles to your existing CSS */
-.journal-title {
-    font-size: 2.2rem;
-    text-align: center;
-    font-weight: 800;
-    color: #ff66b3;
-    margin: 0 0 2rem 0;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-}
-
-.journal-content {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    text-align: left;
-    color: #5a435d;
-    padding: 0 1.5rem;
-}
-
-.modal-content {
-    max-width: 800px;  /* Fixed horizontal size */
-    width: 90%;
-    height: 70vh;      /* Fixed height for vertical scroll */
-    overflow-y: auto;  /* Vertical scrolling */
 }
