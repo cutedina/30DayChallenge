@@ -127,19 +127,26 @@ buttonGrid.innerHTML = Array.from({length: 30}, (_, i) =>
 ).join('');
 
 function updateHeartPosition() {
-    const content = modalContent;
+    const container = document.getElementById('journalContainer');
+    const content = document.getElementById('journalContent');
     const heart = heartScroll;
-    const journalContainer = document.querySelector('.journal-scroll-container');
-    const scrollTop = content.scrollTop;
-    const scrollHeight = content.scrollHeight - content.clientHeight;
+    
+    // Get accurate heights
+    const scrollTop = container.scrollTop;
+    const scrollHeight = container.scrollHeight - container.clientHeight;
     const heartHeight = heart.offsetHeight;
-    const startY = 20; 
-    const endY = content.offsetHeight - heartHeight - 20; 
+    
+    // Calculate movement range
+    const startY = 20; // Top padding
+    const endY = container.clientHeight - heartHeight - 20; // Bottom padding
+    
+    // Calculate position
     const scrollPercentage = scrollTop / scrollHeight;
     const newY = startY + (scrollPercentage * (endY - startY));
     
     heart.style.top = `${newY}px`;
     
+    // Animation handling
     clearTimeout(scrollTimeout);
     heart.style.animation = 'heartbeat-scroll 0.5s infinite';
     
@@ -147,6 +154,12 @@ function updateHeartPosition() {
         heart.style.animation = 'heartbeat-idle 2s infinite';
     }, SCROLL_DELAY);
 }
+
+// Attach to correct container
+const journalContainer = document.getElementById('journalContainer');
+journalContainer.addEventListener('scroll', () => {
+    window.requestAnimationFrame(updateHeartPosition);
+});
 
 let isScrolling;
 modalContent.addEventListener('scroll', () => {
