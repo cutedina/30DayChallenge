@@ -134,7 +134,7 @@ function updateHeartPosition() {
     const scrollHeight = content.scrollHeight - content.clientHeight;
     const heartHeight = heart.offsetHeight;
     const startY = 20; 
-    const endY = journalContainer.offsetHeight - heartHeight - 20; 
+    const endY = content.offsetHeight - heartHeight - 20; 
     const scrollPercentage = scrollTop / scrollHeight;
     const newY = startY + (scrollPercentage * (endY - startY));
     
