@@ -9,7 +9,7 @@ body {
     min-height: 100vh;
     padding: 2rem;
     position: relative;
-    overflow-x: hidden;
+    overflow-x: visible;
 }
 .hearts {
     position: fixed;
@@ -71,6 +71,8 @@ body {
     align-items: center;
     animation: fadeIn 0.3s ease;
     z-index: 1000;
+    overflow: auto;
+    padding-right: 20px;
 }
 .modal-content {
     background: linear-gradient(145deg, #fff8fc, #fff1f8);
@@ -96,7 +98,7 @@ body {
     text-shadow: 2px 2px 3px rgba(0,0,0,0.1);
 }
 .close-btn:hover {
-    transform: rotate(180deg) scale(1.2);
+    transform: rotate(360deg) scale(1.5);
     color: #ff66b3;
 }
 .modal-text {
