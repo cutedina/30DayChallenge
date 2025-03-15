@@ -89,7 +89,7 @@ body {
     border-radius: 30px;
     max-width: 800px;
     width: 90%;
-    max-height: 80vh;
+    height: 80vh;
     z-index: 1000;
     overflow-y: auto;
     position: relative;
@@ -220,7 +220,9 @@ body {
     display: block;
 }
 
-
+.modal.show {
+    display: flex !important;
+}
 
 .modal-content::-webkit-scrollbar {
     width: 0;
