@@ -119,16 +119,20 @@ const journalEntries = [
 let scrollInstance = null;
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize OverlayScrollbars
-    scrollInstance = OverlayScrollbars(document.querySelector('.modal-content'), {
-        scrollbars: {
-            autoHide: 'never',
-            clickScroll: true
-        },
-        overflow: {
-            x: 'hidden'
-        }
-    });
+    // Verify element exists before initializing
+    const modalContent = document.querySelector('.modal-content');
+    
+    if (modalContent) {
+        scrollInstance = OverlayScrollbars(modalContent, {
+            scrollbars: {
+                autoHide: 'never',
+                clickScroll: true
+            },
+            overflow: {
+                x: 'hidden'
+            }
+        });
+    }
     
     buttonGrid.innerHTML = Array.from({ length: 30 }, (_, i) => 
         `<button class="day-btn" style="--i: ${i}" onclick="openModal(${i})">Day ${i + 1}</button>`
