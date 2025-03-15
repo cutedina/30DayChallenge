@@ -178,8 +178,8 @@ body {
     }
 }
 
-::-webkit-scrollbar { 
-    display: none !important;
+.modal-content ::-webkit-scrollbar { 
+    display: none;
 }
 
 .os-scrollbar-vertical {
