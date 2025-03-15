@@ -80,20 +80,23 @@ body {
     align-items: center;
     animation: fadeIn 0.3s ease;
     z-index: 1000;
+    overflow: hidden;
 }
 
 .modal-content {
     background: linear-gradient(145deg, #fff8fc, #fff1f8);
     padding: 2.5rem;
     border-radius: 30px;
-    max-width: 700px;
+    max-width: 800px;
     width: 90%;
     max-height: 80vh;
+    z-index: 1000;
     overflow-y: auto;
     position: relative;
     box-shadow: 20px 20px 60px #d9aec4,
                -20px -20px 60px #ffffff;
     border: 2px solid #fff;
+    padding-right: 50px;
 }
 
 .close-btn {
@@ -199,8 +202,9 @@ body {
 
 .heart-scroll {
     position: absolute;
-    right: 15px;
-    top: 20px; 
+    right: 25px;
+    top: 50%; 
+    transform: translateY(-50%);
     width: 35px;
     height: 35px;
     animation: heartbeat 2s infinite;
@@ -216,14 +220,7 @@ body {
     display: block;
 }
 
-.modal-content {
-    max-width: 800px;  /* Fixed horizontal size */
-    width: 90%;
-    height: 70vh;      /* Fixed height for vertical scroll */
-    position: relative;
-    overflow-y: auto;
-    padding-right: 50px;
-}
+
 
 .modal-content::-webkit-scrollbar {
     width: 0;
