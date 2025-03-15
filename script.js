@@ -3,6 +3,26 @@ const heartScroll = document.getElementById('heartScroll');
 const modalContent = document.querySelector('.modal-content');
 let scrollTimeout;
 const SCROLL_DELAY = 300; 
+
+window.openModal = function(dayIndex) {
+    const modal = document.getElementById('modal');
+    const modalText = document.getElementById('modal-text');
+    const entry = journalEntries[dayIndex];
+
+    modalText.innerHTML = `
+        <div class="journal-title">${entry.title}</div>
+        <div class="journal-content">${entry.content}</div>`;
+
+    modal.classList.add('show');
+    modal.style.display = 'flex';
+    heartScroll.style.display = 'block';
+
+    requestAnimationFrame(() => {
+        modalContent.scrollTop = 0;
+        updateHeartPosition();
+    });
+};
+
 const journalEntries = [
     {
         title: " 💞 Journal Log 1: The Beginning",
@@ -169,24 +189,7 @@ modalContent.addEventListener('scroll', () => {
 
 window.addEventListener('resize', updateHeartPosition);
 
- window.openModal = function(dayIndex) {
-    const modal = document.getElementById('modal');
-    const modalText = document.getElementById('modal-text');
-    const entry = journalEntries[dayIndex];
-
-    modalText.innerHTML = `
-      <div class="journal-title">${entry.title}</div>
-      <div class="journal-content">${entry.content}</div>`;
-    
-    modal.classList.add('show');
-    modal.style.display = 'flex';
-    heartScroll.style.display = 'block';
-
-    requestAnimationFrame(() => {
-      modalContent.scrollTop = 0;
-      updateHeartPosition();
-    });
-  };
+ 
 
 function closeModal() {
     const modal = document.getElementById('modal');
