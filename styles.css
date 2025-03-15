@@ -203,11 +203,12 @@ body {
 .journal-scroll-container {
     position: relative;
     height: 100%;
+    padding: 20px 0;
 }
 
 .heart-scroll {
     position: absolute;
-    right: 25px;
+    right: 10px;
     top: 20px; 
     width: 35px;
     height: 35px;
