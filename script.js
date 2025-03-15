@@ -149,37 +149,41 @@ buttonGrid.innerHTML = Array.from({length: 30}, (_, i) =>
 function updateHeartPosition() {
     const container = document.getElementById('journalContainer');
     const content = document.getElementById('journalContent');
-    const heart = heartScroll;
-    
-    // Get accurate heights
+    const heart = document.getElementById('heartScroll');
+
+    // Null safety checks
+    if (!container || !content || !heart) return;
+
+    // Calculate scroll parameters
     const scrollTop = container.scrollTop;
     const scrollHeight = container.scrollHeight - container.clientHeight;
     const heartHeight = heart.offsetHeight;
-    
-    // Calculate movement range
-    const startY = 20; // Top padding
-    const endY = container.clientHeight - heartHeight - 20; // Bottom padding
-    
-    // Calculate position
-    const scrollPercentage = scrollTop / scrollHeight;
-    const newY = startY + (scrollPercentage * (endY - startY));
-    
-    heart.style.top = `${newY}px`;
-    
+
+    // Only update if scrollable
+    if (scrollHeight > 0) {
+        const startY = 20;
+        const endY = container.clientHeight - heartHeight - 20;
+        const scrollPercentage = scrollTop / scrollHeight;
+        const newY = startY + (scrollPercentage * (endY - startY));
+
+        heart.style.top = `${newY}px`;
+    }
+
     // Animation handling
     clearTimeout(scrollTimeout);
     heart.style.animation = 'heartbeat-scroll 0.5s infinite';
-    
     scrollTimeout = setTimeout(() => {
         heart.style.animation = 'heartbeat-idle 2s infinite';
     }, SCROLL_DELAY);
 }
 
-// Attach to correct container
+// Initialize with null check
 const journalContainer = document.getElementById('journalContainer');
-journalContainer.addEventListener('scroll', () => {
-    window.requestAnimationFrame(updateHeartPosition);
-});
+if (journalContainer) {
+    journalContainer.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updateHeartPosition);
+    });
+}
 
 let isScrolling;
 modalContent.addEventListener('scroll', () => {
