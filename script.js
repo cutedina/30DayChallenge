@@ -116,42 +116,42 @@ const journalEntries = [
     }))
 ];
 
+let scrollInstance = null;
+
 document.addEventListener('DOMContentLoaded', function() {
-    OverlayScrollbars(document.querySelector('.modal-content'), {
+    // Initialize OverlayScrollbars
+    scrollInstance = OverlayScrollbars(document.querySelector('.modal-content'), {
         scrollbars: {
             autoHide: 'never',
             clickScroll: true
         },
         overflow: {
             x: 'hidden'
-        },
-        callbacks: {
-            onInitialized: () => {
-                OverlayScrollbars(document.querySelector('.modal-content')).update();
-            }
         }
     });
+    
+    buttonGrid.innerHTML = Array.from({ length: 30 }, (_, i) => 
+        `<button class="day-btn" style="--i: ${i}" onclick="openModal(${i})">Day ${i + 1}</button>`
+    ).join('');
 });
 
-buttonGrid.innerHTML = Array.from({length: 30}, (_, i) => 
-    `<button class="day-btn" style="--i: ${i}" onclick="openModal(${i})">Day ${i + 1}</button>`
-).join('');
-
 function openModal(dayIndex) {
+    const entry = journalEntries[dayIndex];
     const modal = document.getElementById('modal');
     const modalText = document.getElementById('modal-text');
-    const entry = journalEntries[dayIndex];
-
+    
     modalText.innerHTML = `
         <div class="journal-title">${entry.title}</div>
         <div class="journal-content">${entry.content}</div>
     `;
-
+    
     modal.style.display = 'flex';
     
-    const instance = OverlayScrollbars(document.querySelector('.modal-content'));
-    instance.update(true);
+    if (scrollInstance) {
+        scrollInstance.update(true);
+    }
 }
+
 
 function closeModal() {
     document.getElementById('modal').style.display = 'none';
