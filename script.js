@@ -135,10 +135,11 @@ function updateHeartPosition() {
     const scrollPercentage = Math.min(Math.max(scrollTop / scrollHeight, 0), 1);
     const newPosition = 20 + (scrollPercentage * maxMovement);
     
-    heartScroll.style.transform = `translateY(${newPosition}px)`;
+    content.style.setProperty('--pos', `${newPosition}px`);
 
     clearTimeout(scrollTimeout);
     heartScroll.style.animation = 'heartbeat-scroll 0.5s infinite';
+    
     scrollTimeout = setTimeout(() => {
         heartScroll.style.animation = 'heartbeat-idle 2s infinite';
     }, SCROLL_DELAY);
@@ -164,11 +165,10 @@ function openModal(dayIndex) {
     `;
     modal.style.display = 'flex';
     
-    SetTimeout(() => {
+    setTimeout(() => {
         modalContent.scrollTop = 0;
         updateHeartPosition();
-    }, 50);
-}
+    }, 100);
 
 function closeModal() {
     const modal = document.getElementById('modal');
