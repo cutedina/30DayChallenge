@@ -200,11 +200,15 @@ body {
     padding: 0 1.5rem;
 }
 
+.journal-scroll-container {
+    position: relative;
+    height: 100%;
+}
+
 .heart-scroll {
     position: absolute;
     right: 25px;
-    top: 50%; 
-    transform: translateY(-50%);
+    top: 20px; 
     width: 35px;
     height: 35px;
     animation: heartbeat 2s infinite;
