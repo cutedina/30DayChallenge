@@ -121,6 +121,16 @@ buttonGrid.innerHTML = Array.from({length: 30}, (_, i) =>
     `<button class="day-btn" style="--i: ${i}" onclick="openModal(${i})">Day ${i + 1}</button>`
 ).join('');
 
+document.addEventListener('DOMContentLoaded', function() {
+    OverlayScrollbars(document.querySelector('.modal-content'), {
+        scrollbars: {
+            visibility: "auto",
+            autoHide: "never",
+            clickScroll: true
+        }
+    });
+});
+
 function openModal(dayIndex) {
     const modal = document.getElementById('modal');
     const modalText = document.getElementById('modal-text');
