@@ -131,36 +131,6 @@ function updateHeartPosition() {
     const heart = heartScroll;
     const scrollTop = content.scrollTop;
     const scrollHeight = content.scrollHeight - content.clientHeight;
-    
-    if (scrollHeight > 0) {
-        const maxMovement = content.clientHeight - heart.offsetHeight - 40;
-        const scrollPercentage = scrollTop / scrollHeight;
-        const newPosition = 20 + (scrollPercentage * maxMovement);
-
-        heart.style.top = `${newPosition}px`;
-        
-        clearTimeout(scrollTimeout);
-        heart.style.animation = 'heartbeat-scroll 0.5s infinite';
-        
-        scrollTimeout = setTimeout(() => {
-            heart.style.animation = 'heartbeat-idle 2s infinite';
-        }, SCROLL_DELAY);
-    }
-}
-
-let isScrolling;
-modalContent.addEventListener('scroll', () => {
-    window.cancelAnimationFrame(isScrolling);
-    isScrolling = window.requestAnimationFrame(updateHeartPosition);
-});
-
-window.addEventListener('resize', updateHeartPosition);
-
-function updateHeartPosition() {
-    const content = modalContent;
-    const heart = heartScroll;
-    const scrollTop = content.scrollTop;
-    const scrollHeight = content.scrollHeight - content.clientHeight;
     const scrollPercentage = scrollTop / scrollHeight;
     const modalHeight = content.clientHeight;
     const heartHeight = heart.offsetHeight;
@@ -176,6 +146,33 @@ function updateHeartPosition() {
         heart.style.animation = 'heartbeat-idle 2s infinite';
     }, SCROLL_DELAY);
 }
+
+let isScrolling;
+modalContent.addEventListener('scroll', () => {
+    window.cancelAnimationFrame(isScrolling);
+    isScrolling = window.requestAnimationFrame(updateHeartPosition);
+});
+
+window.addEventListener('resize', updateHeartPosition);
+
+ window.openModal = function(dayIndex) {
+    const modal = document.getElementById('modal');
+    const modalText = document.getElementById('modal-text');
+    const entry = journalEntries[dayIndex];
+
+    modalText.innerHTML = `
+      <div class="journal-title">${entry.title}</div>
+      <div class="journal-content">${entry.content}</div>`;
+    
+    modal.classList.add('show');
+    modal.style.display = 'flex';
+    heartScroll.style.display = 'block';
+
+    requestAnimationFrame(() => {
+      modalContent.scrollTop = 0;
+      updateHeartPosition();
+    });
+  };
 
 function closeModal() {
     const modal = document.getElementById('modal');
