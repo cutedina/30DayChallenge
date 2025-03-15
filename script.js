@@ -127,22 +127,25 @@ buttonGrid.innerHTML = Array.from({length: 30}, (_, i) =>
 ).join('');
 
 function updateHeartPosition() {
-  const content = modalContent;
-  const heart = heartScroll;
-  const scrollTop = content.scrollTop;
-  const scrollHeight = content.scrollHeight - content.clientHeight;
-  const maxMovement = content.clientHeight - heart.offsetHeight - 40; 
-  const scrollPercentage = scrollTop / scrollHeight;
-  const newPosition = 20 + (scrollPercentage * maxMovement);
-  
-  content.style.setProperty('--pos', `${newPosition}px`);
+    const content = modalContent;
+    const heart = heartScroll;
+    const scrollTop = content.scrollTop;
+    const scrollHeight = content.scrollHeight - content.clientHeight;
+    
+    if (scrollHeight > 0) {
+        const maxMovement = content.clientHeight - heart.offsetHeight - 40;
+        const scrollPercentage = scrollTop / scrollHeight;
+        const newPosition = 20 + (scrollPercentage * maxMovement);
 
-  clearTimeout(scrollTimeout);
-  heart.style.animation = 'heartbeat-scroll 0.5s infinite';
-  
-  scrollTimeout = setTimeout(() => {
-    heart.style.animation = 'heartbeat-idle 2s infinite';
-  }, SCROLL_DELAY);
+        heart.style.top = `${newPosition}px`;
+        
+        clearTimeout(scrollTimeout);
+        heart.style.animation = 'heartbeat-scroll 0.5s infinite';
+        
+        scrollTimeout = setTimeout(() => {
+            heart.style.animation = 'heartbeat-idle 2s infinite';
+        }, SCROLL_DELAY);
+    }
 }
 
 let isScrolling;
@@ -158,18 +161,19 @@ function openModal(dayIndex) {
     const modalText = document.getElementById('modal-text');
     const entry = journalEntries[dayIndex];
 
+    heartScroll.style.display = 'block';
+    
     modal.classList.add('show');
     modalText.innerHTML = `
         <div class="journal-title">${entry.title}</div>
         <div class="journal-content">${entry.content}</div>
     `;
-    modal.style.display = 'flex';
+    modal.style.display = 'flex'; 
     
     setTimeout(() => {
         modalContent.scrollTop = 0;
-        updateHeartPosition(); 
-        heartScroll.style.display = 'block';
-      }, 100);
+        updateHeartPosition(); // Initial position update
+    }, 100);
 }
 
 function closeModal() {
