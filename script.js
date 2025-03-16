@@ -1,4 +1,4 @@
-const { OverlayScrollbars} = OverlayScrollbarsGlobal;
+econst { OverlayScrollbars} = OverlayScrollbarsGlobal;
 const buttonGrid = document.querySelector('.button-grid');
 const journalEntries = [
     {
@@ -137,7 +137,6 @@ function openModal(dayIndex) {
     
     modal.style.display = 'flex';
 
-    // Initialize scrollbars
     const modalContent = document.querySelector('.modal-content');
     scrollInstance = OverlayScrollbars(modalContent, {
         scrollbars: {
@@ -148,36 +147,25 @@ function openModal(dayIndex) {
             x: "hidden"
         }
     });
-
-    // Proper initialization callback
-    scrollInstance.on("initialized", () => {
-        const elements = scrollInstance.elements();
-        const viewport = elements.viewport;
-        const scrollbar = elements.scrollbarVertical;
-
-        if (viewport && scrollbar) {
-            viewport.addEventListener('scroll', handleScroll);
-            scrollbar.addEventListener('mouseenter', handleScroll);
-            scrollbar.addEventListener('mouseleave', resetAnimation);
-        }
-    });
 }
 
-function handleScroll() {
-    const scrollbarHandle = document.querySelector('.os-scrollbar-handle');
-    if (!scrollbarHandle) return;
+document.addEventListener("DOMContentLoaded", function () {
+    const heartPNG = document.querySelector(".os-scrollbar-handle");
 
-    scrollbarHandle.classList.add('scrolling');
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(resetAnimation, 300);
-}
-
-function resetAnimation() {
-    const scrollbarHandle = document.querySelector('.os-scrollbar-handle');
-    if (scrollbarHandle) {
-        scrollbarHandle.classList.remove('scrolling');
+    function startFastHeartbeat() {
+        heartPNG.style.animation = "heartbeat-scroll 0.6s infinite";
     }
-}
+
+    function stopFastHeartbeat() {
+        heartPNG.style.animation = "heartbeat-idle 2s infinite";
+    }
+
+    document.getElementById("scroll-container").addEventListener("scroll", function () {
+        startFastHeartbeat();
+        clearTimeout(heartPNG.dataset.scrollTimeout);
+        heartPNG.dataset.scrollTimeout = setTimeout(stopFastHeartbeat, 300);
+    });
+});
 
 function closeModal() {
     const modal = document.getElementById('modal');
