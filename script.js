@@ -125,6 +125,17 @@ buttonGrid.innerHTML = Array.from(
      (_, i) => `<button class="day-btn" onclick="openModal(${i})">Day ${i + 1}</button>`
 ).join("");
 
+function handleScroll() {
+    const scrollbarHandle = document.querySelector('.os-scrollbar-handle');
+    if (!scrollbarHandle) return;
+
+    scrollbarHandle.parentElement.classList.add('scrolling');
+    
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+        scrollbarHandle.parentElement.classList.remove('scrolling');
+    }, 300);
+}
 
 function openModal(dayIndex) {
     const entry = journalEntries[dayIndex];
@@ -150,18 +161,6 @@ function openModal(dayIndex) {
     });
     const viewport = modalContent.querySelector('.os-viewport');
     viewport.addEventListener('scroll', handleScroll);
-}
-
-function handleScroll() {
-    const scrollbarHandle = document.querySelector('.os-scrollbar-handle');
-    if (!scrollbarHandle) return;
-
-    scrollbarHandle.parentElement.classList.add('scrolling');
-    
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-        scrollbarHandle.parentElement.classList.remove('scrolling');
-    }, 300);
 }
 
 function closeModal() {
