@@ -190,7 +190,6 @@ function closeModal() {
     }
     clearTimeout(scrollTimeout);
 }
-}
 
 window.onclick = function(event) {
     const modal = document.getElementById('modal');
