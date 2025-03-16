@@ -1,4 +1,4 @@
-econst { OverlayScrollbars} = OverlayScrollbarsGlobal;
+const { OverlayScrollbars} = OverlayScrollbarsGlobal;
 const buttonGrid = document.querySelector('.button-grid');
 const journalEntries = [
     {
