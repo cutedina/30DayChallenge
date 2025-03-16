@@ -149,7 +149,6 @@ body {
     height: 70vh;
     overflow-y: auto; 
     padding-right: 50px !important;
-    overflow: hidden !important;
 }
 
 @keyframes popIn {
