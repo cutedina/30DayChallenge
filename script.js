@@ -120,7 +120,9 @@ const journalEntries = [
 let scrollInstance = null;
 let scrollTimeout = null;
 
+const heartPNG = document.querySelector('.os-scrollbar-handle');
 
+heartPNG.style.animation = 'heartbeat-idle 2s infinite';
 
 buttonGrid.innerHTML = Array.from(
     { length: 30 },
