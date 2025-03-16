@@ -1,5 +1,3 @@
-import OverlayScrollbars from 'overlayscrollbars';
-
 const buttonGrid = document.querySelector('.button-grid');
 const journalEntries = [
     {
@@ -128,6 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ).join('');
 
     // 2. Initialize scrollbars
+    import OverlayScrollbars from 'overlayscrollbars';
     const modalContent = document.querySelector('.modal-content');
     if (modalContent) {
         scrollInstance = OverlayScrollbars(modalContent, {
