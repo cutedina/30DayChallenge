@@ -119,28 +119,11 @@ const journalEntries = [
 
 let scrollInstance = null;
 
-document.addEventListener("DOMContentLoaded", function () {
-    buttonGrid.innerHTML = Array.from(
-        { length: 30 },
-        (_, i) => `<button class="day-btn" onclick="openModal(${i})">Day ${i + 1}</button>`
-    ).join("");
+buttonGrid.innerHTML = Array.from(
+    { length: 30 },
+     (_, i) => `<button class="day-btn" onclick="openModal(${i})">Day ${i + 1}</button>`
+).join("");
 
-    const modalContent = document.querySelector(".modal-content");
-    if (modalContent) {
-        OverlayScrollbars({ 
-            target: modalContent, 
-            options: {
-                scrollbars: {
-                    autoHide: "never",
-                    clickScroll: true
-                },
-                overflow: {
-                    x: "hidden"
-                }
-            }
-        });
-    }
-});
 
 function openModal(dayIndex) {
     const entry = journalEntries[dayIndex];
@@ -155,13 +138,28 @@ function openModal(dayIndex) {
     modal.style.display = 'flex';
     
     if (scrollInstance) {
-        scrollInstance.update(true);
+        scrollInstance.destroy();
     }
+    
+    const modalContent = document.querySelector('.modal-content');
+    scrollInstance = OverlayScrollbars(modalContent, {
+        scrollbars: {
+            autoHide: "never",
+            clickScroll: true
+        },
+        overflow: {
+            x: "hidden"
+        }
+    });
 }
 
 
 function closeModal() {
     document.getElementById('modal').style.display = 'none';
+    if (scrollInstance) {
+        scrollInstance.destroy();
+        scrollInstance = null;
+    }
 }
 
 window.onclick = function(event) {
