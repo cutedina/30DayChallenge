@@ -137,6 +137,7 @@ function openModal(dayIndex) {
     
     modal.style.display = 'flex';
 
+    // Initialize scrollbars
     const modalContent = document.querySelector('.modal-content');
     scrollInstance = OverlayScrollbars(modalContent, {
         scrollbars: {
@@ -146,16 +147,18 @@ function openModal(dayIndex) {
         overflow: {
             x: "hidden"
         }
-    }, {
-        initialized: function() {
-            const viewport = this.elements().viewport;
-            const scrollbar = this.elements().scrollbarVertical;
-            
-            if (viewport && scrollbar) {
-                viewport.addEventListener('scroll', handleScroll);
-                scrollbar.addEventListener('mouseenter', handleScroll);
-                scrollbar.addEventListener('mouseleave', resetAnimation);
-            }
+    });
+
+    // Proper initialization callback
+    scrollInstance.on("initialized", () => {
+        const elements = scrollInstance.elements();
+        const viewport = elements.viewport;
+        const scrollbar = elements.scrollbarVertical;
+
+        if (viewport && scrollbar) {
+            viewport.addEventListener('scroll', handleScroll);
+            scrollbar.addEventListener('mouseenter', handleScroll);
+            scrollbar.addEventListener('mouseleave', resetAnimation);
         }
     });
 }
@@ -164,22 +167,29 @@ function handleScroll() {
     const scrollbarHandle = document.querySelector('.os-scrollbar-handle');
     if (!scrollbarHandle) return;
 
-    scrollbarHandle.parentElement.classList.add('scrolling');
-    
+    scrollbarHandle.classList.add('scrolling');
     clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-        scrollbarHandle.parentElement.classList.remove('scrolling');
-    }, 300);
+    scrollTimeout = setTimeout(resetAnimation, 300);
+}
+
+function resetAnimation() {
+    const scrollbarHandle = document.querySelector('.os-scrollbar-handle');
+    if (scrollbarHandle) {
+        scrollbarHandle.classList.remove('scrolling');
+    }
 }
 
 function closeModal() {
-    document.getElementById('modal').style.display = 'none';
+    const modal = document.getElementById('modal');
+    if (modal) modal.style.display = 'none';
+    
     if (scrollInstance) {
-        const viewport = document.querySelector('.os-viewport');
-        if (viewport) viewport.removeEventListener('scroll', handleScroll);
+        scrollInstance.off("initialized"); // Remove listeners
         scrollInstance.destroy();
         scrollInstance = null;
     }
+    clearTimeout(scrollTimeout);
+}
 }
 
 window.onclick = function(event) {
