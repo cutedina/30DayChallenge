@@ -120,6 +120,8 @@ const journalEntries = [
 let scrollInstance = null;
 let scrollTimeout = null;
 
+
+
 buttonGrid.innerHTML = Array.from(
     { length: 30 },
      (_, i) => `<button class="day-btn" onclick="openModal(${i})">Day ${i + 1}</button>`
@@ -158,33 +160,27 @@ function openModal(dayIndex) {
         if (viewport && scrollbar) {
             viewport.addEventListener('scroll', handleScroll);
             scrollbar.addEventListener('mouseenter', handleScroll);
-            scrollbar.addEventListener('mouseleave', resetAnimation);
         }
     });
 }
-
 function handleScroll() {
-    const scrollbarHandle = document.querySelector('.os-scrollbar-handle');
-    if (!scrollbarHandle) return;
-
-    scrollbarHandle.classList.add('scrolling');
+    const heartPNG = document.querySelector('.os-scrollbar-handle');
+    if (!heartPNG) return;
     clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(resetAnimation, 300);
+    heartPNG.style.animation = 'heartbeat-scroll 0.8s infinite';
+
+    scrollTimeout = setTimeout(() => {
+        heartPNG.style.animation = 'heartbeat-idle 2s infinite';
+    }, 300);
 }
 
-function resetAnimation() {
-    const scrollbarHandle = document.querySelector('.os-scrollbar-handle');
-    if (scrollbarHandle) {
-        scrollbarHandle.classList.remove('scrolling');
-    }
-}
 
 function closeModal() {
     const modal = document.getElementById('modal');
     if (modal) modal.style.display = 'none';
     
     if (scrollInstance) {
-        scrollInstance.off("initialized"); // Remove listeners
+        scrollInstance.off("initialized");
         scrollInstance.destroy();
         scrollInstance = null;
     }
