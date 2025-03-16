@@ -118,6 +118,7 @@ const journalEntries = [
 ];
 
 let scrollInstance = null;
+let scrollTimeout = null;
 
 buttonGrid.innerHTML = Array.from(
     { length: 30 },
@@ -137,10 +138,6 @@ function openModal(dayIndex) {
     
     modal.style.display = 'flex';
     
-    if (scrollInstance) {
-        scrollInstance.destroy();
-    }
-    
     const modalContent = document.querySelector('.modal-content');
     scrollInstance = OverlayScrollbars(modalContent, {
         scrollbars: {
@@ -151,12 +148,27 @@ function openModal(dayIndex) {
             x: "hidden"
         }
     });
+    const viewport = modalContent.querySelector('.os-viewport');
+    viewport.addEventListener('scroll', handleScroll);
 }
 
+function handleScroll() {
+    const scrollbarHandle = document.querySelector('.os-scrollbar-handle');
+    if (!scrollbarHandle) return;
+
+    scrollbarHandle.parentElement.classList.add('scrolling');
+    
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+        scrollbarHandle.parentElement.classList.remove('scrolling');
+    }, 300);
+}
 
 function closeModal() {
     document.getElementById('modal').style.display = 'none';
     if (scrollInstance) {
+        const viewport = document.querySelector('.os-viewport');
+        if (viewport) viewport.removeEventListener('scroll', handleScroll);
         scrollInstance.destroy();
         scrollInstance = null;
     }
