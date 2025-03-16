@@ -185,9 +185,14 @@ body {
 
 @keyframes heartbeat-scroll {
     0%, 100% { transform: scale(1); }
-    25% { transform: scale(1.2); }
+    25% { transform: scale(1.25); }
     50% { transform: scale(0.95); }
     75% { transform: scale(1.1); }
+}
+
+@keyframes heartbeat-hover {
+    0%, 100% { transform: rotate(15deg); }
+    50% { transform: rotate(-15deg); }
 }
 
 .modal-content ::-webkit-scrollbar { 
@@ -196,7 +201,7 @@ body {
 
 .os-scrollbar-vertical {
     right: 37px !important;
-    width: 50px !important;
+    width: 40px !important;
 }
 
 .os-scrollbar-handle {
