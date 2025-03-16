@@ -125,18 +125,6 @@ buttonGrid.innerHTML = Array.from(
      (_, i) => `<button class="day-btn" onclick="openModal(${i})">Day ${i + 1}</button>`
 ).join("");
 
-function handleScroll() {
-    const scrollbarHandle = document.querySelector('.os-scrollbar-handle');
-    if (!scrollbarHandle) return;
-
-    scrollbarHandle.parentElement.classList.add('scrolling');
-    
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-        scrollbarHandle.parentElement.classList.remove('scrolling');
-    }, 300);
-}
-
 function openModal(dayIndex) {
     const entry = journalEntries[dayIndex];
     const modal = document.getElementById('modal');
@@ -148,7 +136,7 @@ function openModal(dayIndex) {
     `;
     
     modal.style.display = 'flex';
-    
+
     const modalContent = document.querySelector('.modal-content');
     scrollInstance = OverlayScrollbars(modalContent, {
         scrollbars: {
@@ -158,9 +146,30 @@ function openModal(dayIndex) {
         overflow: {
             x: "hidden"
         }
+    }, {
+        initialized: function() {
+            const viewport = this.elements().viewport;
+            const scrollbar = this.elements().scrollbarVertical;
+            
+            if (viewport && scrollbar) {
+                viewport.addEventListener('scroll', handleScroll);
+                scrollbar.addEventListener('mouseenter', handleScroll);
+                scrollbar.addEventListener('mouseleave', resetAnimation);
+            }
+        }
     });
-    const viewport = modalContent.querySelector('.os-viewport');
-    viewport.addEventListener('scroll', handleScroll);
+}
+
+function handleScroll() {
+    const scrollbarHandle = document.querySelector('.os-scrollbar-handle');
+    if (!scrollbarHandle) return;
+
+    scrollbarHandle.parentElement.classList.add('scrolling');
+    
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+        scrollbarHandle.parentElement.classList.remove('scrolling');
+    }, 300);
 }
 
 function closeModal() {
