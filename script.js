@@ -137,6 +137,7 @@ function openModal(dayIndex) {
     
     modal.style.display = 'flex';
 
+    // Initialize scrollbars
     const modalContent = document.querySelector('.modal-content');
     scrollInstance = OverlayScrollbars(modalContent, {
         scrollbars: {
@@ -147,6 +148,35 @@ function openModal(dayIndex) {
             x: "hidden"
         }
     });
+
+    // Proper initialization callback
+    scrollInstance.on("initialized", () => {
+        const elements = scrollInstance.elements();
+        const viewport = elements.viewport;
+        const scrollbar = elements.scrollbarVertical;
+
+        if (viewport && scrollbar) {
+            viewport.addEventListener('scroll', handleScroll);
+            scrollbar.addEventListener('mouseenter', handleScroll);
+            scrollbar.addEventListener('mouseleave', resetAnimation);
+        }
+    });
+}
+
+function handleScroll() {
+    const scrollbarHandle = document.querySelector('.os-scrollbar-handle');
+    if (!scrollbarHandle) return;
+
+    scrollbarHandle.classList.add('scrolling');
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(resetAnimation, 300);
+}
+
+function resetAnimation() {
+    const scrollbarHandle = document.querySelector('.os-scrollbar-handle');
+    if (scrollbarHandle) {
+        scrollbarHandle.classList.remove('scrolling');
+    }
 }
 
 function closeModal() {
