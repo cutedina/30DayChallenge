@@ -149,24 +149,6 @@ function openModal(dayIndex) {
     });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    const heartPNG = document.querySelector(".os-scrollbar-handle");
-
-    function startFastHeartbeat() {
-        heartPNG.style.animation = "heartbeat-scroll 0.6s infinite";
-    }
-
-    function stopFastHeartbeat() {
-        heartPNG.style.animation = "heartbeat-idle 2s infinite";
-    }
-
-    document.getElementById("scroll-container").addEventListener("scroll", function () {
-        startFastHeartbeat();
-        clearTimeout(heartPNG.dataset.scrollTimeout);
-        heartPNG.dataset.scrollTimeout = setTimeout(stopFastHeartbeat, 300);
-    });
-});
-
 function closeModal() {
     const modal = document.getElementById('modal');
     if (modal) modal.style.display = 'none';
