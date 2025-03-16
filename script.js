@@ -120,10 +120,6 @@ const journalEntries = [
 let scrollInstance = null;
 let scrollTimeout = null;
 
-const heartPNG = document.querySelector('.os-scrollbar-handle');
-
-heartPNG.style.animation = 'heartbeat-idle 2s infinite';
-
 buttonGrid.innerHTML = Array.from(
     { length: 30 },
      (_, i) => `<button class="day-btn" onclick="openModal(${i})">Day ${i + 1}</button>`
@@ -141,7 +137,6 @@ function openModal(dayIndex) {
     
     modal.style.display = 'flex';
 
-    // Initialize scrollbars
     const modalContent = document.querySelector('.modal-content');
     scrollInstance = OverlayScrollbars(modalContent, {
         scrollbars: {
@@ -152,30 +147,7 @@ function openModal(dayIndex) {
             x: "hidden"
         }
     });
-
-    // Proper initialization callback
-    scrollInstance.on("initialized", () => {
-        const elements = scrollInstance.elements();
-        const viewport = elements.viewport;
-        const scrollbar = elements.scrollbarVertical;
-
-        if (viewport && scrollbar) {
-            viewport.addEventListener('scroll', handleScroll);
-            scrollbar.addEventListener('mouseenter', handleScroll);
-        }
-    });
 }
-function handleScroll() {
-    const heartPNG = document.querySelector('.os-scrollbar-handle');
-    if (!heartPNG) return;
-    clearTimeout(scrollTimeout);
-    heartPNG.style.animation = 'heartbeat-scroll 0.8s infinite';
-
-    scrollTimeout = setTimeout(() => {
-        heartPNG.style.animation = 'heartbeat-idle 2s infinite';
-    }, 300);
-}
-
 
 function closeModal() {
     const modal = document.getElementById('modal');
