@@ -1,3 +1,5 @@
+import OverlayScrollbars from 'overlayscrollbars';
+
 const buttonGrid = document.querySelector('.button-grid');
 const journalEntries = [
     {
