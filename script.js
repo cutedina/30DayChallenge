@@ -1,10 +1,10 @@
-const { OverlayScrollbars} = OverlayScrollbarsGlobal;
+const { OverlayScrollbars } = OverlayScrollbarsGlobal;
 const buttonGrid = document.querySelector('.button-grid');
 
 const journalEntries = [
-    {
-        title: " 💞 Journal Log 1: The Beginning",
-        content: `<p>Welp, today: March 13th 2025, marks the first day of the challenge, huh…<br>
+  {
+    title: " 💞 Journal Log 1: The Beginning",
+    content: `<p>Welp, today: March 13th 2025, marks the first day of the challenge, huh…<br>
                     I really didn't expect that I’d follow through with it but it didn't sit right with me to do you dirty like that and then for everything to be back to normal without taking at least SOME sort of punishment.<br>
                     Although a bit extreme, I think I can afford to be sad for a month and then be happy later for reallll.<br>
                     (with you perhaps??? :3)<br>
@@ -36,10 +36,10 @@ const journalEntries = [
                     Then I got up, sat my butt down, and started learning to do the website. It's in its infancy stage, of course, it still will display this though!!<br><br>
                     It’s like 17:20 at the time, still a long time till I can drink so that’s unfortunate. I’m currently listening to a podcast and writing this stuff, maybe I’ll end it here for today. I miss you a lot and I still love you.<br>
                     I reckon I should at least add an update at night, since I plan on sleeping in around 8 hours.</p>`
-    },
-    {
-        title: " 💞 Journal Log 2: A Nightmare And Changes",
-        content: `<p><em>I slept.</em><br>
+  },
+  {
+    title: " 💞 Journal Log 2: A Nightmare And Changes",
+    content: `<p><em>I slept.</em><br>
                     Technically, by the time I would’ve gotten around to writing an update to yesterday’s log, it was already March 14th, and I guess there’s no harm in adding the update here:</p>
                     <br><br>
                     <p>So, my brother made it home yesterday.<br>
@@ -109,10 +109,10 @@ const journalEntries = [
                     Sending you as many telepathic mwahs and hugs with your hair ties. 💞💞</p>
                     <br><br><br><br>
                    <p><em>( … am I supposed to sign off or something? )</em></p>`
-    },
-    {
-        title: " 💞 Journal Log 3: Gore Aftermath",
-        content: ` <p>Alrighty, it do be late at night now, like 11pm lol.<br>
+  },
+  {
+    title: " 💞 Journal Log 3: Gore Aftermath",
+    content: ` <p>Alrighty, it do be late at night now, like 11pm lol.<br>
                     I should have written this beforehand but GOD was I busy today.<br>
                     This is gonna be the shortest log in a veeeeery long time so rest easy, I'll just talk briefly about my day to update you and then I'll sleep.. maybe.</p>
                     <br><br>
@@ -155,10 +155,10 @@ const journalEntries = [
                     Just kidding, you really shoulda blocked me there, pal. Because it's paining me more than anything to not be able to message you all the time.</p>
                     <br><br><br>
                     <p>I miss you so heckin’ much, goodnight.</p>`
-    },
-    {
-        title: " 💞 Journal Log 4: Title tile",
-        content: ` <p>Holy crap it’s been 4 days.<br>
+  },
+  {
+    title: " 💞 Journal Log 4: Title tile",
+    content: ` <p>Holy crap it’s been 4 days.<br>
                     I’m writing this at 2:34 pm. It hasn’t been long since I got home so it’s not yet time for lunch. I do be thirsty as heck. ( and hungry hehehe )</p>
                     <br><br>
                     <p>I’m in a really good mood with how today went, plus I managed to get the heart to work!!<br>
@@ -230,10 +230,10 @@ const journalEntries = [
                     I’m so tired. I’ll try and see to it so that I try to ignore your presence tomorrow. I’ll work harder on the website.</p>
                     <br><br>
                     <p>Just don’t be upset at me anymore.</p>`
-    },
-    {
-        title: " 💞 Journal Log x: Title tile",
-        content: ` <p>Sheesh, I can taste the negative energy from yesterday just by glancing at the way I worded stuff.<br>
+  },
+  {
+    title: " 💞 Journal Log x: Title tile",
+    content: ` <p>Sheesh, I can taste the negative energy from yesterday just by glancing at the way I worded stuff.<br>
                     Well, that doesn’t matter anymore, because it’s a new day, and it’s a new me… maybe.</p>
                     <br><br>
                     <p>Well, well, it’s the fifth entry in the Journal Logs, so that means it’s the sixth day that we’ve cut contact. Yup, the math adds up beautifully.<br>
@@ -301,10 +301,10 @@ const journalEntries = [
                     I’ll try organizing stuff tomorrow so that we can play together, I wanna talk to you again :P</p>
                     <br><br>
                     <p>Anyways, I do be tired from all this, so I’m going to sleep. I wonder if I’ll see you tomorrow.</p>`
-    },
-    {
-        title: " 💞 Journal Log x: Title tile",
-        content: ` <p>Writing this right after Isha.<br>
+  },
+  {
+    title: " 💞 Journal Log x: Title tile",
+    content: ` <p>Writing this right after Isha.<br>
                     I’m in a super good mood today, everything was nice. I got some inspiration for the website so I’m gonna look into the stuff tomorrow. I even fixed some little bugs that were happening with the text rendering.</p>
                     <br><br>
                     <p>I’m really happy that I got to interact with you a lot today :3</p>
@@ -357,10 +357,10 @@ const journalEntries = [
                     Nighty night cutie patootie 💞💞</p>
                     <br><br><br>
                     <p>…Telepathic kiss? :3</p>`
-    },
-    {
-        title: " 💞 Journal Log x: Title tile",
-        content: ` <p>Well, I’m very bored.<br>
+  },
+  {
+    title: " 💞 Journal Log x: Title tile",
+    content: ` <p>Well, I’m very bored.<br>
                     I gotta admit, I haven’t been this bored in a while. Ah well, it <em>is</em> pretty early, so I guess that is subject to change.</p>
                     <br><br>
                     <p>Brighten up, Ak!!!<br>
@@ -416,88 +416,130 @@ const journalEntries = [
                     <p>I don’t even know if I want to play later today, fucking weirdos. My mental state is in such shit that I decided not to even send you a message about the vitamin D stuff.</p>
                     <br><br>
                     <p>I’ll just go, man. Goodnight 💞</p>`
-    },
-    {
-        title: " 💞 Journal Log x: Title tile",
-        content: `eeeeeeeee`
-    },
-    {
-        title: " 💞 Journal Log x: Title tile",
-        content: `eeeeeeeee`
-    },
-    {
-        title: " 💞 Journal Log x: Title tile",
-        content: `eeeeeeeee`
-    }, 
-    
-    // placeholder ak dont forget to update this shit 
-    ...Array(20).fill().map((_, i) => ({
-        title: `🌼 Day ${i + 11} 🌸`,
-        content: `Today was an amazing day! or something idk yet`
-    }))
+  },
+  {
+    title: " 💞 Journal Log x: Title tile",
+    content: `eeeeeeeee`
+  },
+  {
+    title: " 💞 Journal Log x: Title tile",
+    content: `eeeeeeeee`
+  },
+  {
+    title: " 💞 Journal Log x: Title tile",
+    content: `eeeeeeeee`
+  },
+
+  // placeholder ak dont forget to update this shit 
+  ...Array(20).fill().map((_, i) => ({
+    title: `🌼 Day ${i + 11} 🌸`,
+    content: `Today was an amazing day! or something idk yet`
+  }))
 ];
 
 let scrollInstance = null;
 let scrollTimeout = null;
 
 buttonGrid.innerHTML = Array.from(
-    { length: 30 },
-     (_, i) => `<button class="day-btn" onclick="openModal(${i})">Day ${i + 1}</button>`
+  { length: 30 },
+  (_, i) => `<button class="day-btn" onclick="openModal(${i})">Day ${i + 1}</button>`
 ).join("");
 
 function openModal(dayIndex) {
-    const entry = journalEntries[dayIndex];
-    const modal = document.getElementById('modal');
-    const modalText = document.getElementById('modal-text');
-    
-    modalText.innerHTML = `
+  const entry = journalEntries[dayIndex];
+  const modal = document.getElementById('modal');
+  const modalText = document.getElementById('modal-text');
+
+  document.getElementById("buttonopen").play();
+
+  modalText.innerHTML = `
         <div class="journal-title">${entry.title}</div>
         <div class="journal-content">${entry.content}</div>
     `;
-    
-    modal.style.display = 'flex';
 
-    const modalContent = document.querySelector('.modal-content');
-    scrollInstance = OverlayScrollbars(modalContent, {
-        scrollbars: {
-            autoHide: "never",
-            clickScroll: true
-        },
-        overflow: {
-            x: "hidden"
-        }
-    });
+  modal.style.display = 'flex';
+
+  const modalContent = document.querySelector('.modal-content');
+
+  scrollInstance = OverlayScrollbars(modalContent, {
+    scrollbars: {
+      autoHide: "never",
+      clickScroll: true
+    },
+    overflow: {
+      x: "hidden"
+    }
+  });
 }
-
 function closeModal() {
-    const modal = document.getElementById('modal');
-    if (modal) modal.style.display = 'none';
-    
-    if (scrollInstance) {
-        scrollInstance.off("initialized");
-        scrollInstance.destroy();
-        scrollInstance = null;
-    }
-    clearTimeout(scrollTimeout);
+  const modal = document.getElementById('modal');
+  if (modal) modal.style.display = 'none';
+  document.getElementById("journalexit").play();
+
+
+  if (scrollInstance) {
+    scrollInstance.off("initialized");
+    scrollInstance.destroy();
+    scrollInstance = null;
+  }
+  clearTimeout(scrollTimeout);
 }
 
-window.onclick = function(event) {
-    const modal = document.getElementById('modal');
-    if (event.target === modal) {
-        closeModal();
-    }
+window.onclick = function (event) {
+  const modal = document.getElementById('modal');
+  if (event.target === modal) {
+    closeModal();
+  }
 };
 
-document.addEventListener('DOMContentLoaded', function() {
-    const loadingScreen = document.querySelector('.loading-screen');
-    loadingScreen.addEventListener('animationend', function(e) {
-        if (e.animationName === 'loadingfadeout' && e.elapsedTime >= 20) {
-            loadingScreen.remove();
-        }
-    });
-    setTimeout(() => {
-        if (loadingScreen && document.body.contains(loadingScreen)) {
-            loadingScreen.remove();
-        }
-    }, 22000);
+document.addEventListener('DOMContentLoaded', function () {
+  const loadingScreen = document.querySelector('.loading-screen');
+  loadingScreen.addEventListener('animationend', function (e) {
+    if (e.animationName === 'loadingfadeout' && e.elapsedTime >= 20) {
+      loadingScreen.remove();
+    }
+  });
+  setTimeout(() => {
+    if (loadingScreen && document.body.contains(loadingScreen)) {
+      loadingScreen.remove();
+
+    }
+  }, 22000);
+  setTimeout(() => {
+    document.getElementById("loading").play();
+  }, 10500);
+  setTimeout(() => {
+    document.getElementById("fadeout").play();
+  }, 17000);
+  setTimeout(() => {
+    document.getElementById("YIPPEE").play();
+  }, 16500);
+  setTimeout(() => {
+    document.getElementById("music").loop = true;
+    document.getElementById("music").play();
+  }, 25000);
 });
+
+
+
+
+const daybutton = document.querySelector(".button-grid");
+const welcomehori = document.querySelector(".welcome-hori");
+const welcomemiya = document.querySelector(".welcome-miya");
+const closebtn = document.querySelector(".close-btn");
+const heart = document.querySelector(".os-scrollbar-vertical .os-scrollbar-handle");
+daybutton.addEventListener("mouseover", () => {
+  document.getElementById("buttonhover").play();
+});
+
+welcomehori.addEventListener("mouseover", () => {
+  document.getElementById("horimiya").play();
+});
+
+welcomemiya.addEventListener("mouseover", () => {
+  document.getElementById("horimiya").play();
+});
+
+closebtn.addEventListener("mouseover", () => {
+  document.getElementById("closebtn").play();
+})
