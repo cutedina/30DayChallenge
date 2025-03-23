@@ -1,40 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>30 Days Journal</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.10.1/styles/overlayscrollbars.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.10.1/browser/overlayscrollbars.browser.es6.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>30 Days Journal</title>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.10.1/styles/overlayscrollbars.css">
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.10.1/browser/overlayscrollbars.browser.es6.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body data-overlayscrollbars-initialize>
-    <a href="https://www.npmjs.com/package/overlayscrollbars" target="_blank"></a> 
-    
-    <div class="hearts">
-        <div class="heart" style="left: 10%; animation-delay: 1s">❤️</div>
-        <div class="heart" style="left: 30%; animation-delay: 3s">❤️</div>
-        <div class="heart" style="left: 50%; animation-delay: 5s">❤️</div>
-        <div class="heart" style="left: 70%; animation-delay: 7s">❤️</div>
-        <div class="heart" style="left: 90%; animation-delay: 2s">❤️</div>
+  <a href="https://www.npmjs.com/package/overlayscrollbars" target="_blank"></a>
+
+  <div class="hearts">
+    <div class="heart" style="left: 10%; animation-delay: 1s">❤️</div>
+    <div class="heart" style="left: 30%; animation-delay: 3s">❤️</div>
+    <div class="heart" style="left: 50%; animation-delay: 5s">❤️</div>
+    <div class="heart" style="left: 70%; animation-delay: 7s">❤️</div>
+    <div class="heart" style="left: 90%; animation-delay: 2s">❤️</div>
+  </div>
+
+  <div class="welcome-container">
+    <div class="welcome-sign">
+      <div class="welcome-text">🌸 Happy Birthday, Dina! 🌸</div>
+      <div class="welcome-subtext">🎂 This is my birthday gift for you! I hope that you have a fantastic birthday!! :D
+        🎂</div>
+      <img src="finalhori.png" class="welcome-hori">
+      <img src="finalmiya.png" class="welcome-miya">
     </div>
+  </div>
 
-    <div class="button-grid"></div>
+  <div class="button-grid"></div>
 
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <p class="modal-text" id="modal-text"></p>
-        </div>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <p class="modal-text" id="modal-text"></p>
     </div>
+  </div>
 
-    <div class="loading-screen">
-        <div class="track">
-          <div class="bar"></div>
-          <img src="finalhori.png" class="bar-hori">
-          <img src="finalmiya.png" class="bar-miya">
-        </div>
-      </div>
-    <script src="script.js"></script>
+  <div class="loading-screen">
+    <div class="waitsign"> Please Wait For a Moment :D</div>
+    <div class="track">
+      <div class="bar"></div>
+      <img src="finalhori.png" class="bar-hori">
+      <img src="finalmiya.png" class="bar-miya">
+    </div>
+  </div>
+
+  <audio id="altmusic" hidden>
+    <source src="altmusic.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="music" hidden>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="birthdayopen" hidden>
+    <source src="birthdayopen.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="buttonhover" hidden>
+    <source src="buttonhover.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="buttonopen" hidden>
+    <source src="buttonopen.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="closebtn" hidden>
+    <source src="closebtnpress.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="fadeout" hidden>
+    <source src="fadeout.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="journalexit" hidden>
+    <source src="journalexit.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="horimiya" hidden>
+    <source src="horimiya.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="loading" hidden>
+    <source src="loading.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="YIPPEE" hidden>
+    <source src="YIPPEE.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="heart" hidden>
+    <source src="heart.mp3" type="audio/mpeg">
+  </audio>
+
+
+  <script src="script.js"></script>
 </body>
+
 </html>
