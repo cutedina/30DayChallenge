@@ -380,10 +380,12 @@ body::before {
   cursor: pointer;
   font-size: 1.1rem;
   color: #6d435a;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation: popIn 0.5s ease backwards;
   box-shadow: 5px 5px 10px #d9aec4,
     -5px -5px 10px #fff4ff;
+    position: relative;
+    overflow: hidden;
 }
 
 .day-btn:hover {
@@ -392,6 +394,24 @@ body::before {
     -8px -8px 15px #fff4ff;
   background: linear-gradient(145deg, #ffd4eb, #ffe6f4);
 
+}
+
+.day-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent);
+  transition: all 0.6s;
+}
+
+.day-btn:hover::before {
+  left: 100%;
 }
 
 .day-btn:active {
@@ -487,6 +507,38 @@ body::before {
   overflow-y: auto;
   padding-right: 50px !important;
 }
+
+.explanation-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(145deg, #ffe6f4, #ffd4eb);
+  border: none;
+  padding: 1.2rem 2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #6d435a;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 5px 5px 10px #d9aec4,
+             -5px -5px 10px #fff4ff;
+  z-index: 500;
+  animation: float 4s ease-in-out infinite;
+}
+
+.explanation-btn:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 8px 8px 15px #d9aec4,
+             -8px -8px 15px #fff4ff;
+  background: linear-gradient(145deg, #ffd4eb, #ffe6f4);
+}
+
+.explanation-btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: inset 5px 5px 10px #d9aec4,
+             inset -5px -5px 10px #fff4ff;
+}
+
 
 /* Main site animations*/
 
@@ -629,6 +681,358 @@ body::before {
     transform: scale(1.05);
   }
 }
+
+
+
+
+
+
+
+/* Birthday One */
+
+.day-btn.day-16 {
+  background: linear-gradient(145deg, #ff99cc, #ff66b3);
+  color: white;
+  text-shadow: 0 0 15px rgba(255,102,179,0.4),
+  5px 5px 10px #d9aec4,
+  -5px -5px 10px #fff4ff;
+  animation: heartbeat 1.2s ease infinite;
+  border: 2px solid #ffffff;
+  position: relative;
+  overflow: visible;
+  padding: 0rem;
+}
+
+.day-btn.day-16:hover {
+  transform: translateY(-5px) scale(1.1);
+}
+
+
+.button-gift-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #ff99cc, #ff66b3);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px #d9aec4,
+             -5px -5px 10px #fff4ff;
+  transition: all 0.2s ease;
+  z-index: 2;
+}
+
+.button-gift-wrap::before {
+  content: '';
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.button-gift-wrap::after {
+  content: '';
+  left: 47.5%;
+  position: absolute;
+  height: 100%;
+  width: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.day-btn.day-16 .tap-label {
+  position: absolute;
+  bottom: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  color: #7d526b;
+  animation: float 5s infinite;
+}
+
+.button-confetti {
+  position: absolute;
+  pointer-events: none;
+  animation: button-confetti-fall ease-out 1s forwards;
+  z-index: 1001;
+  top: 5px;
+}
+
+@keyframes button-confetti-fall {
+  0% { transform: translateY(-100%) rotate(0deg); }
+  100% { transform: translateY(100%) rotate(360deg); }
+}
+
+.birthday-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+  min-height: 600px;
+  overflow: visible;
+}
+
+.gift-wrap {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #ff99cc, #ff66b3);
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  box-shadow: 10px 10px 20px #d9aec4,
+             -10px -10px 20px #ffffff;
+  transition: none;
+  transform: translate(0, 0);
+  z-index: 2;
+}
+
+.gift-wrap::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.5);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.gift-wrap::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 60px;
+  background: rgba(255, 255, 255, 0.5);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.gift-message {
+  position: relative;
+  z-index: 1;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.confetti {
+  position: absolute;
+  pointer-events: none;
+  animation: confetti-fall ease-out 2s forwards;
+  z-index: 1001;
+}
+
+.birthday-container.active .gift-message {
+  display: block;
+}
+
+.special-day-16 {
+  background: linear-gradient(135deg, #fff0f5 30%, #ffe6f4 70%);
+  padding: 3rem;
+  border-radius: 30px;
+  border: 3px solid #ff99cc;
+  box-shadow: 0 0 30px rgba(255,102,179,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.birthday-header {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.floating-heart {
+  font-size: 2.5rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.special-title {
+  color: #ff3385;
+  text-shadow: 2px 2px 3px rgba(255,51,133,0.3);
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 0;
+  animation: pulse 2s ease infinite;
+}
+
+.sparkle-text {
+  color: #d6199d;
+  text-shadow: 2px 2px 3px rgba(255,51,133,0.3);
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0;
+}
+
+.message-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  margin: 2rem 0;
+  position: relative;
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+}
+
+.message-card:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.highlight {
+  color: #ff3385;
+  font-weight: 700;
+  display: block;
+  margin: 1rem 0;
+}
+
+.animated-text {
+  font-size: 1.3rem;
+  text-align: center;
+  margin: 2rem 0;
+  animation: colorShift 4s infinite;
+}
+
+.magic {
+  font-size: 2rem;
+  background: linear-gradient(45deg, #ff3385, #ff66b3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+}
+
+.memory-box {
+  perspective: 1000px;
+  margin: 2rem auto;
+  width: 80%;
+}
+
+.polaroid-frame {
+  background: white;
+  padding: 1rem;
+  border-radius: 15px;
+  transform: rotate(2deg) translateZ(0);
+  transition: transform 0.3s ease;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+}
+
+.polaroid-frame:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.memory {
+  color: #ff3385;
+  font-style: italic;
+  margin-top: 0.5rem;
+  display: inline-block;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  cursor: pointer;
+  position: relative;
+}
+.memory.fade-out {
+  opacity: 0;
+  transform: translateY(-10px) rotate(-3deg);
+  pointer-events: none;
+}
+
+.memory.fade-in {
+  opacity: 0;
+  transform: translateY(10px) rotate(3deg);
+  animation: memoryCycle 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.birthday-wish {
+  text-align: center;
+  margin: 3rem 0;
+  position: relative;
+}
+
+.wish-item {
+  display: inline-block;
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255,102,179,0.1);
+  border-radius: 10px;
+}
+
+.fireworks {
+  font-size: 2rem;
+  margin-top: 1rem;
+  animation: sparkle 1s linear infinite;
+}
+
+.secret-note {
+  text-align: center;
+  margin-top: 2rem;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.secret-note:hover {
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes colorShift {
+  0% { color: #ff3385; }
+  50% { color: #ff66b3; }
+  100% { color: #ff3385; }
+}
+
+@keyframes sparkle {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes memoryCycle { 
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes confetti-fall {
+  0% {
+      transform: translateY(-100vh) rotate(0deg);
+      opacity: 1;
+  }
+  100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+  }
+}
+
+
 
 @media (max-width: 768px) {
   .button-grid {
