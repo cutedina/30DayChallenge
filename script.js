@@ -1,6 +1,14 @@
 const { OverlayScrollbars } = OverlayScrollbarsGlobal;
 const buttonGrid = document.querySelector('.button-grid');
 
+const memories = [
+  "stayed up late talking about everything? 🌙",
+  "laughed until our stomachs hurt? 😂",
+  "shared that secret glance across the room? 👀",
+  "discovered our weird common interests? 🎮",
+  "pretended to study while really just people-watching? 📚"
+];
+
 const journalEntries = [
   {
     title: " 💞 Journal Log 1: The Beginning",
@@ -429,28 +437,101 @@ const journalEntries = [
     title: " 💞 Journal Log x: Title tile",
     content: `eeeeeeeee`
   },
+  {
+    title: " 💞 Journal Log x: Title tile",
+    content: `eeeeeeeee`
+  },
+  {
+    title: " 💞 Journal Log x: Title tile",
+    content: `eeeeeeeee`
+  },
+  {
+    title: " 💞 Journal Log x: Title tile",
+    content: `eeeeeeeee`
+  },
+  {
+    title: " 💞 Journal Log x: Title tile",
+    content: `eeeeeeeee`
+  },
+  {
+    title: " 💞 Journal Log x: Title tile",
+    content: `eeeeeeeee`
+  },
+  {
+    title: "🎂 🎉HAPPY BIRTHDAY, DINA!🎉",
+    content: `<div class="birthday-container">
+    <div class="gift-message" style="display: none;">
+        <div class="special-day-16">
+      <div class="birthday-header">
+        <div class="floating-heart">💖</div>
+        <h1 class="special-title">To The Most Amazing Dina</h1>
+        <div class="floating-heart">💖</div>
+      </div>
+      
+      <div class="birthday-message">
+        <p class="sparkle-text">On this day that celebrates your existence,</p>
+        
+        <div class="message-card">
+          <p>From the moment our paths crossed, you've been:<br>
+          <span class="highlight">My sunshine on cloudy days 🌤<br>
+          My favorite melody in life's symphony 🎶<br>
+          The missing puzzle piece I never knew I needed 🧩</span></p>
+        </div>
+
+        <p class="animated-text">You make every ordinary moment<br>
+        <span class="magic">EXTRAORDINARY</span></p>
+
+        <div class="memory-box">
+          <div class="polaroid-frame">
+            <div class="polaroid-content">Remember when we...<br>
+            <span class="memory">${memories[0]}</span></div>
+          </div>
+        </div>
+
+        <div class="birthday-wish">
+          <p>May your year be filled with:<br>
+        </div>
+
+        <div class="secret-note">P.S. You'll always be my favorite 'what if' 😘</div>
+      </div>
+    </div>
+    </div>
+    <div class="gift-wrap"></div>`,
+    special: true
+  },
 
   // placeholder ak dont forget to update this shit 
-  ...Array(20).fill().map((_, i) => ({
-    title: `🌼 Day ${i + 11} 🌸`,
+  ...Array(14).fill().map((_, i) => ({
+    title: `🌼 Day ${i + 17} 🌸`,
     content: `Today was an amazing day! or something idk yet`
   }))
 ];
 
+
 let scrollInstance = null;
 let scrollTimeout = null;
+let isFirstClick = true;
 
 buttonGrid.innerHTML = Array.from(
   { length: 30 },
-  (_, i) => `<button class="day-btn" onclick="openModal(${i})">Day ${i + 1}</button>`
+  (_, i) => {
+    if (i === 15) {
+      return `
+        <button class="day-btn day-16" onclick="initGiftAnimationForButton(event)">
+          🎈Day 16🎈
+          <div class="button-gift-wrap"><div class="tap-label">Open me :3</div></div>
+        </button>
+      `;
+    }
+    return `<button class="day-btn" onclick="openModal(${i})">Day ${i + 1}</button>`;
+  }
 ).join("");
+
 
 function openModal(dayIndex) {
   const entry = journalEntries[dayIndex];
   const modal = document.getElementById('modal');
   const modalText = document.getElementById('modal-text');
-
-  document.getElementById("buttonopen").play();
 
   modalText.innerHTML = `
         <div class="journal-title">${entry.title}</div>
@@ -470,7 +551,85 @@ function openModal(dayIndex) {
       x: "hidden"
     }
   });
+
+
+  if (entry.special) {
+    setTimeout(() => {
+      const container = document.querySelector('.birthday-container');
+      if (container) initGiftAnimation(container);
+    }, 100);
+
+    document.getElementById("birthdayopen").play();
+    const memoryElement = modalText.querySelector('.memory');
+    if (memoryElement) {
+      let currentIndex = 0;
+      let lastClick = 0;
+      const clickDelay = 2500;
+
+      memoryElement.addEventListener('click', function () {
+        const now = Date.now();
+        if (now - lastClick < clickDelay) return;
+
+        lastClick = now;
+        document.getElementById("birthdayopen").play();
+        this.classList.add('memory-changing');
+
+        this.classList.add('fade-out');
+
+        setTimeout(() => {
+          currentIndex = (currentIndex + 1) % memories.length;
+          this.textContent = memories[currentIndex];
+
+          this.classList.remove('fade-out');
+          this.classList.add('fade-in');
+
+          setTimeout(() => {
+            this.classList.remove('fade-in');
+          }, 500);
+        }, 500);
+      });
+    }
+  } else {
+    document.getElementById("buttonopen").play();
+  }
+
 }
+
+function openExplanation() {
+  const modal = document.getElementById('modal');
+  const modalText = document.getElementById('modal-text');
+
+  modalText.innerHTML = `
+    <div class="journal-title">💌 In case you were wondering:</div>
+    <div class="journal-content">
+      <p>It's just a little diary that I made for you starting from the day we started the challenge, hence the name “30DayChallenge”.</p>
+      <br> 
+      <p>I considered it a learning experience and just implemented whatever new thing i learned in those languages, whilst writing about my daily life and things that happened.</p> 
+      <br>
+      <p>I know that it’s MY diary but I hope that you’ll appreciate the gesture, because, truly:<p> 
+      <p style="text-align: center; font-size: 2rem; margin: 2rem 0; color: #ff66b3;">Thank you for all the memories and for putting up with me for so long. I dedicate this website specifically for you, because you’re truly special to me. 💕</p>
+      <br>
+      <p>P.S: Try interacting with the website, I added a few easter eggs and little thingies here and there :3</p>
+    </div>
+  `;
+
+  modal.style.display = 'flex';
+  document.getElementById("buttonopen").play();
+
+  const modalContent = document.querySelector('.modal-content');
+  if (scrollInstance) scrollInstance.destroy();
+
+  scrollInstance = OverlayScrollbars(modalContent, {
+    scrollbars: {
+      autoHide: "never",
+      clickScroll: true
+    },
+    overflow: {
+      x: "hidden"
+    }
+  });
+}
+
 function closeModal() {
   const modal = document.getElementById('modal');
   if (modal) modal.style.display = 'none';
@@ -515,31 +674,319 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("YIPPEE").play();
   }, 16500);
   setTimeout(() => {
+    horiHearts();
+  }, 16600);
+  setTimeout(() => {
     document.getElementById("music").loop = true;
     document.getElementById("music").play();
   }, 25000);
 });
 
 
+function initGiftAnimation(container) {
+  const giftWrap = container.querySelector('.gift-wrap');
+  const message = container.querySelector('.gift-message');
 
+  let isAnimating = false;
+  let velocityY = 0;
+  let velocityX = 0;
+  let posY = 0;
+  let rotation = 0;
+
+  giftWrap.addEventListener('click', startAnimation);
+  function startAnimation() {
+    if (isAnimating) return;
+
+    isAnimating = true;
+    document.getElementById("birthdayopen").play();
+    createConfetti();
+
+    message.style.display = 'block';
+
+    velocityY = -15;
+    velocityX = Math.random() * 4 - 2;
+    posY = 0;
+    rotation = 0;
+
+    giftWrap.style.transform = 'translate(0, 0) rotate(0deg)';
+
+    animate();
+  }
+
+  function animate() {
+    if (!isAnimating) return;
+
+    velocityY += 0.8;
+    posY += velocityY;
+    rotation += velocityX * 2;
+
+    giftWrap.style.transform = `
+          translate(0, ${posY}px)
+          rotate(${rotation}deg)
+      `;
+
+    if (posY < window.innerHeight) {
+      requestAnimationFrame(animate);
+    } else {
+      isAnimating = false;
+      giftWrap.remove();
+    }
+  }
+}
+
+
+function initGiftAnimationForButton(event) {
+  const giftButton = document.querySelector('.day-btn.day-16');
+  if (isFirstClick) {
+    event.stopPropagation();
+    const buttonWrap = giftButton.querySelector('.button-gift-wrap');
+
+    let isAnimating = false;
+    let velocityY = 0;
+    let velocityX = 0;
+    let posY = 0;
+    let posX = 0;
+    let rotation = 0;
+
+    isFirstClick = false;
+
+    startAnimation2();
+    createHearts();
+    document.getElementById("birthdayopen").play();
+
+    function startAnimation2() {
+      if (isAnimating) return;
+
+      isAnimating = true;
+      document.getElementById("birthdayopen").play();
+
+      velocityY = -10;
+      velocityX = Math.random() * 1 - 2;
+      posY = 0;
+      posX = 0;
+      rotation = 0;
+
+      buttonWrap.style.transform = 'translate(0, 0) rotate(0deg)';
+
+      animate2();
+    }
+
+    function animate2() {
+      if (!isAnimating) return;
+
+      velocityY += 0.8;
+      posY += velocityY;
+      posX += velocityX;
+      rotation += velocityX * 2;
+
+      buttonWrap.style.transform = `
+          translate(0, ${posY}px)
+          rotate(${rotation}deg)
+      `;
+
+      if (posY < 500) {
+        requestAnimationFrame(animate2);
+      } else {
+        isAnimating = false;
+        buttonWrap.remove();
+        giftButton.style = 'overflow: hidden';
+      }
+    }
+  } else {
+    openModal(15);
+  }
+}
+
+function createConfetti() {
+  const modalContent = document.querySelector('.modal-content');
+  const colors = ['#FFA500', '#FF6B35', '#FFD700', '#FF8C42', '#FFB347', '#FFAA33'];
+
+  for (let i = 0; i < 75; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.cssText = `
+          left: ${Math.random() * 100}%;
+          width: ${6 + Math.random() * 4}px;
+          height: ${6 + Math.random() * 4}px;
+          background: ${colors[Math.floor(Math.random() * colors.length)]};
+          border-radius: 2px;
+          animation-duration: ${3 + Math.random() * 2}s;
+          position: absolute;
+          z-index: 1;
+          transform-origin: center bottom;
+      `;
+    modalContent.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 5000);
+  }
+}
+
+function createHearts() {
+  const colors = ['#FF69B4', '#FF1493', '#FF6B6B', '#FF4500'];
+  const heartVariations = ['❤️', '💙', '💛', '💜'];
+  const screenHeight = window.innerHeight;
+
+  for (let i = 0; i < 120; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart-particle';
+    heart.style.cssText = `
+          left: ${Math.random() * 100}%;
+          bottom: 0;
+          font-size: ${20 + Math.random() * 15}px;
+          color: ${colors[Math.floor(Math.random() * colors.length)]};
+          position: fixed;
+          z-index: 1;
+          transform-origin: center;
+          opacity: 1;
+          pointer-events: none;
+      `;
+    heart.textContent = heartVariations[Math.floor(Math.random() * heartVariations.length)];
+    document.body.appendChild(heart);
+
+    let velocityY = -12 + (Math.random() * -8);
+    let velocityX = (Math.random() - 0.5) * 3;
+    let posX = 0;
+    let posY = 0;
+    let rotation = 0;
+
+    const animate = () => {
+      velocityY += 0.4;
+      posY += velocityY;
+      posX += velocityX;
+      rotation += velocityX * 1.5;
+
+      const verticalPosition = (posY / screenHeight) * 100;
+
+      if (posY > screenHeight - 50) {
+        posY = screenHeight - 50;
+        velocityY *= -0.3;
+        velocityX *= 0.6;
+      }
+
+      heart.style.transform = `
+              translate(${posX}px, ${posY}px)
+              rotate(${rotation}deg)
+          `;
+
+      heart.style.opacity = `${1 - (verticalPosition / 120)}`;
+
+
+      if (verticalPosition < 120) {
+        requestAnimationFrame(animate);
+      } else {
+        heart.remove();
+      }
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    };
+
+    requestAnimationFrame(animate);
+  }
+}
+
+function createHeartsFromElement(element, count = 30) {
+  if (!element) {
+    console.error("Element not found for heart creation");
+    return;
+  }
+
+  const colors = ['#FF69B4', '#FF1493', '#FF6B6B', '#FF4500'];
+  const heartVariations = ['❤️', '💙', '💛', '💜'];
+  const rect = element.getBoundingClientRect();
+  const startX = rect.left + rect.width / 2;
+  const startY = rect.top + rect.height / 2;
+
+  for (let i = 0; i < count; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart-particle';
+    heart.style.cssText = `
+      left: ${startX + (Math.random() - 0.5) * 80}px;
+      top: ${startY}px;
+      font-size: ${15 + Math.random() * 10}px;
+      color: ${colors[Math.floor(Math.random() * colors.length)]};
+      position: absolute;
+      z-index: 9999;
+      transform-origin: center;
+      overflow: hidden;
+      opacity: 1;
+      pointer-events: none;
+    `;
+    heart.textContent = heartVariations[Math.floor(Math.random() * heartVariations.length)];
+    document.body.appendChild(heart);
+
+    let velocityY = -12 + (Math.random() * -4);
+    let velocityX = (Math.random() - 0.5) * 8;
+    let posX = 0;
+    let posY = 0;
+    let rotation = 0;
+    let gravity = 0.8;
+    const maxTime = 800;
+
+    const animate = (timestamp) => {
+      if (!heart.startTime) heart.startTime = timestamp;
+      const elapsed = timestamp - heart.startTime;
+
+      velocityY += gravity;
+
+      posX += velocityX;
+      posY += velocityY;
+      rotation += velocityX * 0.5;
+
+      const opacity = 1 - (elapsed / maxTime);
+
+      heart.style.transform = `
+        translate(${posX}px, ${posY}px)
+        rotate(${rotation}deg)
+      `;
+      heart.style.opacity = opacity;
+
+      if (elapsed < maxTime && opacity > 0) {
+        requestAnimationFrame(animate);
+      } else {
+        heart.remove();
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }
+}
+
+function horiHearts() {
+  const horiElement = document.querySelector(".bar-hori");
+  if (horiElement) {
+    createHeartsFromElement(horiElement, 26);
+  }
+}
 
 const daybutton = document.querySelector(".button-grid");
 const welcomehori = document.querySelector(".welcome-hori");
 const welcomemiya = document.querySelector(".welcome-miya");
 const closebtn = document.querySelector(".close-btn");
 const heart = document.querySelector(".os-scrollbar-vertical .os-scrollbar-handle");
+const day16 = document.querySelector('.day-btn.day-16');
+
 daybutton.addEventListener("mouseover", () => {
   document.getElementById("buttonhover").play();
 });
 
-welcomehori.addEventListener("mouseover", () => {
+welcomehori.addEventListener("mouseover", function () {
+  createHeartsFromElement(this, 10);
   document.getElementById("horimiya").play();
 });
 
-welcomemiya.addEventListener("mouseover", () => {
+welcomemiya.addEventListener("mouseover", function () {
+  createHeartsFromElement(this, 10);
   document.getElementById("horimiya").play();
 });
 
 closebtn.addEventListener("mouseover", () => {
   document.getElementById("closebtn").play();
 })
+
+day16.addEventListener("mouseover", function () {
+  if (getComputedStyle(this).overflow === "hidden") {
+    createHeartsFromElement(this, 4);
+  }
+});
+
+initGiftAnimationForButton()
