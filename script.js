@@ -2,11 +2,20 @@ const { OverlayScrollbars } = OverlayScrollbarsGlobal;
 const buttonGrid = document.querySelector('.button-grid');
 
 const memories = [
-  "stayed up late talking about everything? 🌙",
-  "laughed until our stomachs hurt? 😂",
-  "shared that secret glance across the room? 👀",
-  "discovered our weird common interests? 🎮",
-  "pretended to study while really just people-watching? 📚"
+  "Click this text for the memories to cycle through! If you get back here, then you've cycled through all of them.",
+  "Remember when we first one? It was so fricken out of nowhere, like I was at my grandparents and you just message me like dat, and then we kept on yapping for days after I found out how much of a sigma alpha wolf male you are. That's not what I want to talk about, though, I only brought this up to talk about how freaky we were during the first few weeks, like... PEGGING??? heh.",
+  "Remember 11/11? I remember how by that point, I was already sure of my ever growing crush on you, and despite knowing the fact that you don't like dating, I still decided to shoot my shot for the first time, because I thought that you are rad as CRAP dude!!! I felt my soul leaving my body writing that. Yeah okay even before confessing to you I was stressed as all heck, and Lou was encouraging me to confess to you and stuff, and then I was even more stressed after I screwed it up, because I realized I went in to propose with absolutely zero planning. But I kinda don't regret anything from it, to be honest. Your letter made me super duper happy even though it was sort of a rejection. I still have it, in fact!",
+  "Remember my trip to Oran? I was really not happy about going there, but man, you made that trip so amazing for me,  I was super happy just texting you all the time, even though I should've been revising for that history test we had, but I still chose to yap with you instead and I still occassionally think about it too. It was also the first time we had a long call, at night! An hour long call!!! I think it was during here that the daily goodnights started getting very long too, right?",
+  "Remember our dumdum Instagram and Discord calls? The calls in which we used to talk about god knows what. WHAT DID WE EVEN TALK ABOUT???? probably me being lovey dovey and you being all hateful ong. I still really enjoyed the calls, though. We did all kinds of singing, hell, I sang a lot there, too! And it was also the birth of some silly jokes, like the trumpet.",
+  "Remember the French test? I will never believe how lucky I got to get you paper there, I was more happy about that than anything, and didn't even focus on the test. I'm sure her reaction in your class must've been a shock to you.",
+  "Remember how I used to call you every single day after exams? It was relieving just getting to hear you talk after them darn stressing exams, and also not relieving hearing you talk about how badly you screwed them up. And then two weeks later I hear about how you got 19.72/20... Okay, DINA... Oh! I'm not sure if I told you about this, but it was during this that my mom finally got suspicious of me hanging around with a girl, see, I wanted to call you back after talking to you the day we did physics, because you told me on call that you absolutely screwed up the exams. So, I went home, put my bags down, dialed you up and told my mom I was going to my friend's house. Then she kept questioning me and all of a sudden my phone just went 'Votre correspondant ne reponds pas...' and I just froze there, and then went out. I still called you.",
+  "Remember you giving me your hairtie? I love that thing to pieces, oh my god. I worked super duper hard to get it, which is such a big lie, because I only had to give you so many snacks and beg for millenia for you to give it to me. 10/10 Though, I'm never getting rid of it, especially now I've been wearing it so much on my wrist instead of my forearm.",
+  "Remember new years? I wrote you such a long message that day because I had started getting more conscious about the fact that maybe I was being crappy to you for so long, so I tried to do my best with it and pour my little heart into it, and I'm glad you took your time reading it and were stoked about it! It even netted me my second matching pfp with you, and also the opportunity to watch Horimiya with you, which I loved so so much!! <3",
+  "Remember the hieroglyphics? It's crazy to think that we would've stayed such smol simple friends if you didn't go ahead and look for ways to translate it.",
+  "Remember Valentine's day? I'm super happy with how it turned out, because that was something I had planned FOREVER, man. I was super super super super super super super glad that you didn't block me right afterwards. JOKE I KNOW YOU'RE NOT EVIL, JUST A LITTLE MEANIE.",
+  "Remember playing Yandere Sim together for like, 2 days? Yeah, probably not the prettiest end to it, but I hope that we can get back to playing it soon!!",
+  "Remember playing Among Us together? And how fun Together and Dress to Impress were? oh wait, those were like week.",
+  "Remember how we watched Horimiya: The Lost Pieces??? Oh wait, that's soon >:)"
 ];
 
 const journalEntries = [
@@ -165,7 +174,7 @@ const journalEntries = [
                     <p>I miss you so heckin’ much, goodnight.</p>`
   },
   {
-    title: " 💞 Journal Log 4: Title tile",
+    title: " 💞 Journal Log 4: Man, screw the titles",
     content: ` <p>Holy crap it’s been 4 days.<br>
                     I’m writing this at 2:34 pm. It hasn’t been long since I got home so it’s not yet time for lunch. I do be thirsty as heck. ( and hungry hehehe )</p>
                     <br><br>
@@ -240,7 +249,7 @@ const journalEntries = [
                     <p>Just don’t be upset at me anymore.</p>`
   },
   {
-    title: " 💞 Journal Log x: Title tile",
+    title: " 💞 Journal Log 5",
     content: ` <p>Sheesh, I can taste the negative energy from yesterday just by glancing at the way I worded stuff.<br>
                     Well, that doesn’t matter anymore, because it’s a new day, and it’s a new me… maybe.</p>
                     <br><br>
@@ -311,7 +320,7 @@ const journalEntries = [
                     <p>Anyways, I do be tired from all this, so I’m going to sleep. I wonder if I’ll see you tomorrow.</p>`
   },
   {
-    title: " 💞 Journal Log x: Title tile",
+    title: " 💞 Journal Log 6",
     content: ` <p>Writing this right after Isha.<br>
                     I’m in a super good mood today, everything was nice. I got some inspiration for the website so I’m gonna look into the stuff tomorrow. I even fixed some little bugs that were happening with the text rendering.</p>
                     <br><br>
@@ -367,7 +376,7 @@ const journalEntries = [
                     <p>…Telepathic kiss? :3</p>`
   },
   {
-    title: " 💞 Journal Log x: Title tile",
+    title: " 💞 Journal Log 7",
     content: ` <p>Well, I’m very bored.<br>
                     I gotta admit, I haven’t been this bored in a while. Ah well, it <em>is</em> pretty early, so I guess that is subject to change.</p>
                     <br><br>
@@ -426,35 +435,180 @@ const journalEntries = [
                     <p>I’ll just go, man. Goodnight 💞</p>`
   },
   {
-    title: " 💞 Journal Log x: Title tile",
+    title: " 💞 Journal Log 8",
+    content: `<p>Well, yesterday ended off on a bad note.<br>
+    I’m still genuinely super upset at the fact that they even sent gore to begin with, how they were treating you like garbage and stuff. Hell, I’m really sorry about not backing you up. D*** move from my part. Sorry. I’m sure you’re extremely mad at me as I’m writing this, I don’t know whether you’ll forgive me or not, but for what it’s worth, I really regret it.<br>
+    I was too chicken.</p>
+    <br><br>
+    <p>Anywho, it hasn’t been too long since I woke up, and I’m kind of home alone, so I decided to start a new tutorial solely focused on CSS, and absolutely avoid Javascript for the time being, because I just want to style the website, not do anything else. It goes against my moral code but I plan to ask AI for help on the harder stuff.<br>
+    That is to say, work on this website is currently paused, as I’m doing practice websites for the time being, just writing random codes to see what they do, and also trying to recreate stuff online!</p>
+    <br><br>
+    <p>What the heck, this tutorial wants me to remake Youtube?</p>
+    <br><br>
+    <p>Oh, yeah! You might be wondering as to why I’m home alone: Basically, my dad went to work as per usual, and my mom went to our school, because she heard about the fact that even though there are no results, the teachers are still going to be there, and she was ADAMANT on talking to my teachers again.<br>
+    Thankfully, They didn’t talk crap about me.</p>
+    <br><br>
+    <p>…<em>most of them didn’t</em>, in fact, the majority were really nice, telling my mom how much of a good student I’m and all that good stuff. Except the French teacher... no, CADET.<br>
+    You see, CADET hasn’t the slightest clue of who I am, so she mistook me for someone else, and then started spewing to my mom the most random bullcrap ever: “Your kid is so delinquent! He is hanging around extremely bad influence! I saw him the other day going away from school when they were supposed to be getting inside school after lunch, and I was like ‘Woah woah, where do you think you’re going?’ and he said ‘I’m going to pray’. Yeah, right. In fact, I saw him smoking the other day!”<br>
+    She really doesn’t have the slightest clue as to who I am, even my mom found it humorous.</p>
+    <br><br>
+    <p>I realize it’s been a bit since I’ve last said this, but, I love you :3 I wonder if I should say it tonight as I remind you not to take the vitamins, but realistically, I won’t. I still love you though. Hehe.</p>
+    <br><br>
+    <p>Anyways, I don’t really have much to do at the moment.<br>
+    In fact, I’ve been so bored that I decided to hit up some old friends of mine. Lead to some pretty interesting conversations, but who am I to complain? Overall, really enjoyable.<br>
+    ( Still much rather talk to you instead 😝)</p>
+    <br><br>
+    <p>Seems as though my mom told my dad about my teachers saying nice stuff about me, so he said that he’s going to get me a gift. PLEASE just let it be a phone, I don’t care which phone, just any phone. I swear to god if it’s another watch.<br>
+    I won’t complain if it is, but I’d seriously rather have something useful to me instead.</p>
+    <br><br>
+    <p>Huh, the group chat is pretty darn lively if I do say so myself. I was fully expecting it to just die out in such a lame manner.<br>
+    Again, I really feel bad for not standing up for you yesterday. I’ll have to apologize extensively when we do start talking again, albeit in a long time from now, but I rest my case.</p>
+    <br><br>
+    <p>I just tried to play with Samou but, WOW, his wifi is bad right now. Like, leagues worse than yours. Hell, I’m surprised such lag could even be possible in this day and age, but I digress.<br>
+    We tried fixing it but to no avail, I guess it’s not something he can fix. Too bad.</p>
+    <br><br>
+    <p>What the heck?? My grandpa just called me, gave me 4000Da, called me again, and then gave me another 2000Da??? Alright, out of all the days I could have gotten rich, I didn’t expect it to be today. Yippeeeee!</p>
+    <br><br>
+    <p>Bit of a time skip here:<br>
+    Oh my god they do not want to play at all in this group chat, seriously, I’m trying to set up some games STOP DISAPPEARING WAAAAAA.</p>
+    <br><br>
+    <p>I played roblox for a bit, I did some silly horror game which tried so hard to be scary to the point where it was SO difficult not to laugh.<br>
+    I also didn’t realize but I guess that Israel has already breached the Palestine-Israel cease-fire agreement that they had in place? Since Iza just messaged me earlier freaking out about some alarms happening, so that’s lame.<br>
+    May god be with them in Gaza.</p>
+    <br><br>
+    <p>Also, Gartic Phone was a bit mehh today, no?<br>
+    I felt like I had so much more fun yesterday, but today it was just brain rot. Too bad.<br>
+    Still, I wonder why you wouldn’t join call in discord. We were all in a group call there, although only Haroun and I were speaking.</p>
+    <br><br>
+    <p>Think that’s enough for the night, I’m just going to go rot in bed for a bit and then sleep. I hope to talk to you more tomorrow again.</p>
+    <br><br>
+    <p>I’m so going to elongate the conversation once I tell you about the vitamin D :3<br>
+    I hope you have the sweetest dreams for days to come. 💞</p>`
+  },
+  {
+    title: " 💞 Journal Log 9",
+    content: `<p>Today’s the first day of spring!!<br>  
+    I miss this season so much oh my god I wanna see the flowers blooming and all the green and blue :D</p>  
+    <br><br>  
+    <p>Anyways it’s a Friday today and I woke up super late, so I’ll go to the mosque first and then I’ll yap here.</p>  
+    <br><br>  
+    <p>Okay, I’m back, I’m really bored even though there is the group chat so I’m just going to go read some Quran.</p>  
+    <br><br>  
+    <p>Right, a bit of a timeskip here, it’s a bit before lunch, and wow do I have nothing to offer in terms of yap today.<br>  
+    EXCEPT for one thing: Katana Zero.<br>  
+    See, instead of doing anything important today, like being useful to society or being social with friends, I decided to just finish the game. And wow, I’m in love.<br>  
+    Okay okay, I’m just going to summarize the story from the point where I picked off today. I’m not sure if I even did that for the previous parts but it’s fine.</p>  
+    <br><br>  
+    <p>Anyways, so, I started right inside of a club, after the psychiatrist told me to kill the DJ there, and to do it without speaking a single word with him. When I questioned the reason for that, the psychiatrist said that he’s a drug dealer and that I’m “too important” to risk having drugs. The gameplay in this club level is fun, it’s like a mix of stealth and quick action. Once I reach the DJ, he struggles at first to confirm if I’m "real" when I arrive, and drops to the floor all scared. I chose to ignore the psychiatrist’s orders and talk to him. He goes on to explain that the drug he's on has greatly altered his perception of time and reality, and that the bottle he came across was not labeled, putting “Zero” at a disadvantage for not knowing the drug's name, because by now he realizes it is the drug that the psychiatrist gives him. The DJ then ended up being shot from outside, so I didn’t get to kill him but it still counted towards the assassination. Something funny that happened in the level is that there is an enemy called “Strong Terry”, just an average NPC, but one who is constantly glazed by all the other NPCs throughout the game. He is the first enemy that dies without even fighting, and then every other NPC tries to avenge him. Poor lad.<br>  
+    Oh my god I yapped this much about one of the least important levels in the story. Bruh.</p>  
+    <br><br>  
+    <p>Okay, after this, I go back home and see that I’m once again notorious on the tv news. I proceed to have a reiteration of that nightmare he has every day, where he is a little boy, and a scientist comes in and shouts at him to warn him, before getting shot in the head by a shadow figure. This dream gets more scary every night and progresses more without him waking up. I go to the psychiatrist afterwards and confront him about the drug, and he starts cursing me out for not listening to him, before fearfully explaining that it’s a military drug that alters your perception of time and stuff.</p>  
+    <br><br>  
+    <p>Okay wait let me speed through this.<br>  
+    He then gives me the dossier of whom I need to assassinate; It’s a prisoner who is chosen to testify against the government in a court hearing, and I need to eliminate him without killing anyone else.<br>  
+    Going into the prison, I find out that not a single soul is alive ( IMPORTANT ). Uh oh, even the prisoner that I need. SWAT teams arrive at the prison and speak to “The Dragon”, telling me that I’m surrounded. 
+    I decided to escape without killing a single person. Going back home, I find some random vet from the “War” on the street. He is begging for money. When I walk past him he says that he sacrificed his leg in the war just for a dirty “Cromag” ( I think they’re a race, sort of like dirty Jews ) to walk past him. After I tell him that I also fought in the war and chooses not to believe me and start cursing me out, the game abruptly curts to me killing him. Back home, the little neighbor girl said that some guy gave her a tape and said to show it to me. When I decided to watch it with the little girl, it was apparently a snuff film where this dude killed my nextdoor neighbors to try to impress me.
+    I sent the little girl back home and finished it myself, where I find out that he has a prototype version of the drug that I have, and he reveals that going into withdrawal from the drug makes you die to others, but you are forever stuck in your own mind living your worst nightmares. Yeesh. Same nightmare, same stuff. I then jolt awake and go to the psychiatrist, only to see that he’s out of office today, so I just walk out and some dude in a limousine picks me up. It’s the guy from the snuff film. He starts saying how much of a fan he is of “The Dragon”, and that snorts cocaine and asks me to work with him, which is when I refuse and call him “fucking subhuman” (lol), so he gets mad and kicks me out of the car ( I also gave him my katana, oops ). I then proceed to follow him at night to some studio, which is where the whole level takes place, and then at the end I fight this dude, and after hitting him a few times, his colleague shows up, and she stops me from killing him and escapes with him ( She can somehow teleport ). Wait, I’m gonna stop saying I and use “Zero” instead. Zero goes home after that, and gets visited by the little girl who’s dressed up like him for trick or treat. He drinks his herbal tea and drifts off to sleep. Instead of having a nightmare, he awakens paralyzed on his couch and surrounded by two masked men: Comedy and Tragedy. They say that they have poisoned his tea, and explain a prophecy to him. After three days, Zero must don one of two masks, The golden mask of life, or The silver mask of death. Whatever he chooses, they take away the other. Zero jolts awake afterwards, and then the screen glitches to him laying down on his couch to the psychiatrist's office. He addresses Zero and asks him to tell him again about the men in masks. Zero looks around in shock and discomfort, and as he tries to talk to the psychiatrist and explain the weird stuff he's been facing, the psychiatrist transforms into the guy from yesterday’s encounter, who then approaches Zero and instructs him to "get up." Zero is placed at the beginning of the level with no instruction. He can move at the beginning, but eventually movements devolve into a blur of nonsensical noise and screen glitches ( big words big words hehe). As Zero breaks free from his previous hallucination, it’s almost like he’s in his mind now, in a place that’s sort of like where Sans and Chara fight, and this monologue appears on screen ( copied it off of Google ):</p>  
+    <br><br>  
+    <p><strong>Twenty-eight years in that godforsaken jungle.</strong><br>  
+    Killing soldiers wasn't so bad. I hardly remember it.<br>  
+    But burning those villages, watching those naked peasants cry… <br>  
+    I see it every day. It's not PTSD, it's the drug.<br>  
+    It's only been a week, but it feels like a year.<br>  
+    Every word is getting longer, the mosquitoes are getting louder.<br>  
+    When the drug runs out, time stops, and you're stuck in the jungle forever.<br>  
+    It's... grains of sand in a shrinking hourglass.<br>  
+    I know what comes next.  I need to ask you a favor.</p>  
+    <br><br>  
+    <p>A few more hallucinations happen afterwards; One where Zero is in the same spot as that old vet that was begging on the street, doing the same, and getting chided at by the men in masks for going into withdrawal. Another where he is in the office, everything looking red as he falls to the ground scared, seeing both the psychiatrist violently dismembered, and beside him the little girl with his katana through her. Only then does he come out of the hallucinations as the psychiatrist gives him a large dosage of the drug to compensate for missing the previous day, and also comments about Zero’s “thousand yard stare”.<br>  
+    Zero is then instructed to pick up a dossier which contains information about “Omar Al-Qasim” ( Funny name ), a billionaire who funded in the manufacturing of the drug and who needs to be assassinated. He is located in some mansion. Zero enters the mansion through a ceiling window. He finds the bad cocaine guy and follows him, fighting through the guards inside. In the last room of the mansion, he kills everyone there, but then gets warped back in time where he triggers a bomb trap right upon opening the door, that knocks him unconscious, leading me to believe that the powers of the drug are precognition; foresight, instead of time travel. Which does make sense, because a screen pops up at the end of each level I played; if I die, Zero says “No, that won’t work” and I pass it, he says “Yes, that should work”, before replaying a recording of Zero going through the level.</p>  
+    <br><br>  
+    <p>Anyways, he wakes up in a dark room with cocaine man prompting him to wake up. Zero gets repeatedly killed by him. With the dialogue options, I find out that his name is V and the girl from earlier is SNOW. I then annoyed V so much that he killed Omar Al-Qasim out of rage and asks this one colleague of his to kill Zero whilst he’s still chained up, and then gets out. Zero escapes from the chair and kills the colleague in a sort of boss fight ( his name is Mr. Kissyface ).</p>  
+    <br><br>  
+    <p>Meanwhile, outside, SNOW and V are discussing their current situation. SNOW suggests that V will get a reward from “The Boss” for eliminating “The Swordsman”( MEEE ). As Snow teleports away, V is startled by a body thrown out of the window of the building that Zero was trapped in. He runs away while Zero chases him on his motorbike.</p>  
+    <br><br>  
+    <p>Which then leads to the coolest part of the game, riding on the highway on a motorbike, killing other henchmen/colleagues in their own motorbikes as the sun slowly sets. V then comes back in a fricken helicopter, firing missiles at Zero. Zero deflects his bullets back at his helicopter, bringing it down. V, now visibly wounded and on the road, tells Zero that he will kill “The Dragon”. The screen turns red then, and someone says “He is not The Dragon… I am.” Before Zero is able to kill V, The real Dragon teleports in, slices V’s arms and takes him away for “Questioning”.<br>  
+    Okay yeah wow I’m barely at the first half of the game and this is already this long. Nope, not happening. If you do want to hear about the rest of the game, do ask me, and I’ll be happy to tell you about it :D</p>  
+    <br><br>  
+    <p>Whoops, a tad bit too late now, but I’ll write this before going to sleep. I had a lot of fun talking to you, despite it being short and stuff and you saying things like “Forget about me” and blah blah, I still felt really cozy :3<br>  
+    Sorry about not helping you aswell.</p>  
+    <br><br>  
+    <p>I hope you’re sleeping well, BAI BAIII SIGNING OFFF 💞</p>`
+  },
+  {
+    title: " 💞 Journal Log 10",
+    content: `<p>Why am I getting the weird school Saturday vibe today?<br>  
+    ANYWAYS HIII, I HAD A SUPER FUN DREAM WITH YOU IN IT EHEHEHEHE.<br>  
+    Won’t tell you about it though, DAAAAME.</p>  
+    <br><br>  
+    <p>I woke up today feeling hella happy and cozy, almost drifted off again, but I chose to get up seeing how late it was, and went to turn on my pc and was reading your yap with Samy in the gc.<br>  
+    Gotta say, though, I’m hella jealous of him on goddd. Because like, I also want to talk to you a whole lot, but I can’t because I’m trying to restrain myself like a man who keeps his word. We did cheat yesterday, though. Oops HEHE.</p>  
+    <br><br>  
+    <p>My dad told me to go out with him, so I did just that. We went in da car to Alger Centre. He was doing his own thing, so I decided to get a little bit familiar with the area.<br>  
+    I’ve never had the chance to do so, and even though the weather was extremely hot, I still had fun.</p>  
+    <br><br>  
+    <p>We then went back home, and stopped on the way to buy ingredients for the sweets my mom and I are making for the eid. OH! I forgot to mention it yesterday, but my mom and I have made two kinds of sweets thus far; Charak with nuts and also my favorite sweet that we make every year; A white chocolate sweet :D I love white choco so much.</p>  
+    <br><br>  
+    <p>It hasn’t been too long since I got home, so I hope that we get to play Among Us together latah :D</p>  
+    <br><br>  
+    <p>Wait omg it’s the next day I completely forgot to finish writing. Um um um I fixed the website yesterday, I got the heart to work so uhhh yuh I LOVE YOU SO MUCHHHHH 💞</p>  `
+  },
+  {
+    title: " 💞 Journal Log 11",
+    content: `<p>Well that was embarrassing 💀<br>  
+    I didn’t expect the 10th one of all days to be the shortest. oopsie.</p>  
+    <br><br>  
+    <p>Oh well, all you need to know is that I had fun yesterday :3<br>  
+    Also, I’m kind of home alone right now, both my dad and mom went out together at like 10 am? I remember her coming to me and talking to me but I have no idea what she said.<br>  
+    I think my dad dropped her off to go shopping with her friend whilst he went off to work as per usual because it’s Sunday, DUH.</p>  
+    <br><br>  
+    <p>I plan to lock the frickity frick in and absolutely cook on the website. I’m gonna put all my knowledge and motivation to good use and finish the website hopefully today. All that will be left is to polish it and add a few easter eggs later on.</p>  
+    <br><br>  
+    <p>The group chat is also dead so I literally have zero distractions, and Hichem told me that we won’t play since his family came over so he’s helping his mother with chores and stuff, and it’s very likely that they won’t be leaving any time soon. Let’s goo!</p>  
+    <br><br>  
+    <p>Okay, well. I may have gotten distracted from time to time but overall, the website is finished. I’m super proud of the current product, 1000+ lines of code put to good use!<br>  
+    I’m super tired from looking at lines, LOL. I’ma put off working on it tomorrow and then get the final product done on Tuesday, should be neat. After that it’s just a matter of polishing up the <em>birthday message.</em></p>  
+    <br><br>  
+    <p>Other than that, I watched a video on an iceberg about Katana Zero; Icebergs are like videos were parts of a media are explored, the higher up the topic is, the more known it is, and the lower it is in the iceberg… You know da drill. It had some really neat explanations as well as fan theories, I also found out that the game has a DLC that’s been in the works for ages, so that’s something to look forward to!<br>  
+    I was also listening to a podcast which really made me get unfocused. It was a podcast of some dudes who live in Japan and talk about the most random crap. I still enjoy it alot!</p>  
+    <br><br>  
+    <p>Oh, I tried reading Quran after lunch, but I literally fell asleep whilst reading it, oopsie daisy.</p>  
+    <br><br>  
+    <p>AND FINALLY, THE HIGHLIGHT OF THE DAY: CHEATING ON THE AGREEMENT!!<br>  
+    Yeah sure I may have gotten lenient on myself for a <em>bit</em> and did that, but man, I don’t regret it. I had so much fun playing with you;<br>  
+    I got to teach you Uno and you got your first win, I laughed so hard when I did the ride game I just couldn’t hold it in, and the parkour game was really really fun. I enjoyed it, I like teamwork stuff! Dress to Impress was cool as well, you said I did well so I’m proud :D</p>  
+    <br><br>  
+    <p>Anyways it’s a tad bit late so I’m gonna head off to bed now. I’ll see ya tomorrow</p>  `
+  },
+  {
+    title: " 💞 Journal Log 12",
+    content: `<p>Holy, I just woke up and I’m so tired.<br>
+    It’s barely even noon what da heck.<br>
+    I feel like I’ve never asked about you in this diary, so, how are ya doing? Are you feeling well compared to before? Are you taking good care of yourself? Did you see a doctor? How did the little event thingy go? Are you keeping up with reading Quran?<br>
+    All these questions are things I really want to know and there are even more, but bleh.</p>
+    <br><br>
+    <p>I don’t know what to do today, so I’m just gonna go play some games, maybe Bloons TD 6? I really wanna do Terraria as well but I don’t have friends who can do it or are willing to play it, unfortunate :(</p>
+    <br><br>
+    <p>Okay, hella boring day so far. Literally the only things I did of note was helping my mom make sweets, and also going to shop shop and petting da little kitties outside.</p>
+    <br><br>
+    <p>The group chat might as well be cooked now that the final days of Ramadan are nearing, so despite having suggested that we play Mario Party, I doubt many people will show up. Sadge.<br>
+    At least we played Dress to Impress again, ‘twas fun.<br>
+    And then we did it again, AND IT WAS EVEN MORE FUN. I love how we’re both ignoring the fact that we’re not supposed to play or even talk together, HEHEHEHE.<br>
+    I really enjoyed the parkour stuff and I really wanna finish the game. I did wanna play afterwards with you and Lou but I guess that it was too late.</p>
+    <br><br>
+    <p>Really short log compared to the others, but I think I’ma go to bed, I do be tired after all.<br>
+    Goody nighty :3 💞</p>`
+  },
+  {
+    title: " 💞 Journal Log 13",
     content: `eeeeeeeee`
   },
   {
-    title: " 💞 Journal Log x: Title tile",
+    title: " 💞 Journal Log 14",
     content: `eeeeeeeee`
   },
   {
-    title: " 💞 Journal Log x: Title tile",
-    content: `eeeeeeeee`
-  },
-  {
-    title: " 💞 Journal Log x: Title tile",
-    content: `eeeeeeeee`
-  },
-  {
-    title: " 💞 Journal Log x: Title tile",
-    content: `eeeeeeeee`
-  },
-  {
-    title: " 💞 Journal Log x: Title tile",
-    content: `eeeeeeeee`
-  },
-  {
-    title: " 💞 Journal Log x: Title tile",
-    content: `eeeeeeeee`
-  },
-  {
-    title: " 💞 Journal Log x: Title tile",
+    title: " 💞 Journal Log 15",
     content: `eeeeeeeee`
   },
   {
@@ -464,35 +618,60 @@ const journalEntries = [
         <div class="special-day-16">
       <div class="birthday-header">
         <div class="floating-heart">💖</div>
-        <h1 class="special-title">To The Most Amazing Dina</h1>
+        <h1 class="special-title">To my Dearest Dindin, my Beloved Sisi:</h1>
         <div class="floating-heart">💖</div>
       </div>
       
       <div class="birthday-message">
-        <p class="sparkle-text">On this day that celebrates your existence,</p>
+        <p class="sparkle-text">As time slowly yet gracefully crawls toward the glow of March 28th, I sit here like a loser writing you this long ahh message—okay, jokes aside, I’ve been waiting forever for your birthday. Today (as of you reading this), it’s not just a date on the calendar or something. To me, it’s a celebration of “Dina Sirine,” the gift we do not deserve, the extraordinary person who paints the world in colors (or music ;)) the way only angels could, the girl I idolize with all my existence. Today, I want to try and pour every ounce of my heart into this relatively short message (lies—it’s a novel), to hopefully make you smile, to show you how special you are to me, and to capture the depth of what you mean to me, no matter how uncapturable it is; that is to say, the way your very existence has redefined my understanding of my world. Happy Birthday, my pookie.</p>
         
+        <div class="message-card2">
+          <p><span class="highlight"> I. March 28th, 20XX: The Day the Cosmos Collapsed (in a Good Way, though)</span></p>
+          <p>March 28th is a truly amazing day, one that deserves to be etched in gold. No matter which year it is, it’s always a special day. Why? Because it’s the day the world got much brighter, and infinitely more beautiful, for a deity descended upon it; the birth of its North Star, my North Star. The universe must’ve been conspiring and cackling, like an evil doctor or something, creating you. You are, without a doubt in my mind, a fine creation—the greatest masterpiece in the universe: strong yet tender, wise yet curious, fiery yet calm, and hella loving :).</p>
+          <p>It sure isn’t the day I met you, the day fate twisted its little twisty twists, but without this day, there would be no chance encounter for us. So I’m endlessly glad that March 28th exists, and I’ll forever honor it, because it feels like winning a lottery I didn’t even know I’d entered. Being able to cherish you is like stumbling upon a hidden galaxy—one where the stars hum your name and the planets orbit your laughter. You, Dina Sirine, are the Big Bang of my personal universe. Before you, everything was static; after you, supernovas.</p>
+          <br><br>
+          <p>Ok, I think I'll stop with the astronomy jokes; You probably understand by now that you are my star.</p>
+        </div>
+
         <div class="message-card">
-          <p>From the moment our paths crossed, you've been:<br>
-          <span class="highlight">My sunshine on cloudy days 🌤<br>
-          My favorite melody in life's symphony 🎶<br>
-          The missing puzzle piece I never knew I needed 🧩</span></p>
+          <p><span class="highlight"> II. How much I missed you. </span></p>
+          <p>Before I truly begin, I'd like to take a few words to tell you how much I missed you:</p>
+          <p>I miss you so much it feels like there’s an empty space in my days where you should be. Every little thing reminds me of you—the way I hear a joke or see a reel and instinctively want to let you in on it, and how you make me laugh too, the warmth I feel when I'm talking to you. I catch myself looking at my phone, hoping for a message, even if not directed to me, just to feel a little closer to you.</p>
+          <p>Time moves differently when you’re not here. The days stretch longer, and even the things I usually enjoy feel a little less exciting because I can’t share them with you. I miss your laugh, and the way you make everything feel lighter, even on the hardest days for both you and I :3.</p>
+          <p>The highlight of my break so far has been playing with you, not with the others, but just with you. I had so much fun doing parkour and dressing up with you, I truly had fun playing roblox with you. </p>
+          <p>That is to say, I know now how much it hurts to lose you, so I will do my best to never let it happen again. No matter how far apart we are, you’re always in my heart. But I won’t lie, I think I fell in love with you even more now.</p>
         </div>
 
-        <p class="animated-text">You make every ordinary moment<br>
-        <span class="magic">EXTRAORDINARY</span></p>
-
-        <div class="memory-box">
-          <div class="polaroid-frame">
-            <div class="polaroid-content">Remember when we...<br>
-            <span class="memory">${memories[0]}</span></div>
-          </div>
+        <div class="message-card2">
+          <p><span class="highlight"> III. The Little Things, And The Big Things, That Make You, You. </span></p>
+          <p>Dina, maybe it's just me, but you are the kind of person who turns the smallest, most ordinary moments into something magical. It’s in the way you laugh, the way you get excited about things, the way you care so deeply about stuff, going as far as to fight for what you consider to be right, and are willing to learn from others and are curious about stuff in a good way, and in the way your presence alone is enough to make everything feel okay. You have this effortless way of making people feel special, like they matter, like they are seen. And I know that because you do that to me, by either caring for me or caring about me <3.</p>
+          <p>There are a billion brilliant features of you that just come together to make you seem like you're not of this world, like, seriously, I'm always amazed by how fricken cool you are. Like, Your mind? Sophisticated, hell, a kaleidoscope of curiosity, AND I DON'T EVEN KNWO WHAT THAT MEANS!!! The way you talk about the things you love like I said before, that pure enthusiasm that turns every word into music, and sometimes the pure laziness or bitterness or hatred, lol. Maybe it’s how your mind moves so fast, shifting between wisdom and absurdity in a way that never fails to amaze me. You are both the most chaotic and the most composed person I know, someone who can joke around one second and then say something so profound the next. You are a paradox in the most beautiful way, like the universe itself couldn’t decide on just one wonderful thing, so it made you everything instead. There is also your voice, and man is it angelic, not just the sound of it but also its weight; You're such an amazing singer, as you made me go from having zero interest in opera music to actually liking it, and you're also so good at singing just about anything ( ukulele? :3 ), but more than that, you're a great yapper, one of da best! I could probably fall asleep just listening to you talk about... I dunno, but something you like!</p>
+          <p>And then there are the tiny things, the ones that might go unnoticed to anyone who isn’t paying attention. The way you type when you’re excited, the way you make inside jokes feel like secret little worlds we get to share ( COUUUGH COUGH COUGH PEGGING COUGHHHHHH ). The way you react to things, the little sounds you make when you’re caught off guard or surprised, gasping like you got betrayed by your closest ally, and also the way you sigh when you’re exasperated but secretly amused. Every little detail, every habit, every thoughtless quirk of yours, each one adds another layer to why I think you are the most incredible person I have ever known.</p>
+          <p>I don’t think you realize how much you affect the people around you. You leave little pieces of yourself in people’s hearts, without even trying. Your kindness lingers, your words echo, your presence stays long after you’ve left the room. I have felt it, time and time again. And I hope you know that this world, my world, is so much better simply because you exist. AND NOW FOR THE SEAMLESS TRANSITION ONTO THE NEXT TOPIC!!</p>
         </div>
 
-        <div class="birthday-wish">
-          <p>May your year be filled with:<br>
+        <div class="message-card">
+          <p><span class="highlight"> IV. How You Changed My World. </span></p>
+          <p>Before you, my life was fine. It was plain okay. It was moving along like a steady river, predictable and calm. And then you showed up, and suddenly, the river met the ocean. Suddenly, there were waves, and tides, and endless horizons I never even knew existed. You opened my eyes to things I didn’t know I needed, feelings I didn’t know I could feel.</p>
+          <p>You have changed the way I see things, the way I experience the world. I don’t just hear songs anymore—I think about which ones remind me of you ( like Last Christmas, or the Duck Song ). Even the most random, passing things make me think of you. A phrase, a color, a melody and boom, everything is connected to you, like you’ve become the thread running through the entire fabric of my thoughts.</p>
+          <p>And it’s not just the little things. You have changed me in bigger ways too. You’ve made me braver, made me care about things more deeply, made me realize that life is about feeling. Feeling everything, the good and the bad, because that’s what makes us human. You make me want to be better, not because I think I need to be, but because I want to be, for you, for myself, for the future I hope to have with you in it. TLDR ; went from an npc to a loving npc.</p>
         </div>
 
-        <div class="secret-note">P.S. You'll always be my favorite 'what if' 😘</div>
+        <div class="message-card2">
+          <p><span class="highlight"> V. A Few Memories I Share With You </span></p>
+          <p>For dis occassion, I decided to put together a few memories that I cherish with you, in chronological order: ( Click on the pink text to make it switch :D )<p>
+          <span class="memory">${memories[0]}</span>
+        </div>
+
+        <div class="message-card">
+          <p><span class="highlight"> VI. The Forever Part ( Cheesy? Yes. ) </span></p>
+          <p class="sparkle-text">Sisi, I could write for centuries and never fully articulate your magic. If there’s one thing I want you to take away from this ( besides the fact that I think you are quite literally divine ), it’s that I cherish you. Not just for your kindness, or your humor, or your brilliance, but for you—as you are, in all your colors, in all your moments, even the ones you don’t think are worth noticing. I see them, and I treasure them.</p>
+          <p class="sparkle-text">I promise to always be here. To support you, to celebrate you, to miss you when you’re not around, like I keep doing. I promise to remind you how incredible you are, even on the days when you don’t feel like believing it yourself ( aka none ). I promise to listen, to learn, to grow alongside you. I promise to never take you for granted ever again, to always treat you like the rare, irreplaceable person that you are.</p>
+          <p class="sparkle-text">You are, without a doubt, one of the best things to ever happen to this world. And to me.</p>
+          <p class="sparkle-text">So, my dearest Dina Sirine, my beloved Sisi, my North Star, my lottery win, my favorite person—happy, happy birthday. I hope today makes you feel even half as loved as you make me feel every single day. 💖</p>
+        </div>
+        <br><br>
+        <p class="magic">With a whole lotta love: KimKim :3 </p>
       </div>
     </div>
     </div>
